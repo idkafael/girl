@@ -53,6 +53,18 @@
   .topo nav a:hover{opacity:1;color:var(--rosa)}
   .topo nav .btn{opacity:1;font-weight:800;font-size:14px;padding:9px 16px;background:var(--creme);color:var(--preto);border:2px solid var(--creme);box-shadow:4px 4px 0 var(--rosa)}
   .topo nav .btn:hover{color:var(--preto);box-shadow:2px 2px 0 var(--rosa)}
+  /* header acompanha a cor da seção embaixo dele */
+  .topo{transition:background-color .3s ease, color .3s ease, border-color .3s ease}
+  .topo .marca span{transition:color .3s ease}
+  .topo nav .btn{transition:background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .12s ease, transform .12s ease}
+  .topo[data-tema="claro"]{background:var(--creme);color:var(--preto);border-bottom-color:var(--preto)}
+  .topo[data-tema="claro"] nav .btn{background:var(--preto);color:var(--creme);border-color:var(--preto)}
+  .topo[data-tema="claro"] nav .btn:hover{color:var(--creme)}
+  .topo[data-tema="azul"]{background:var(--azul);color:var(--creme);border-bottom-color:var(--preto)}
+  .topo[data-tema="azul"] .marca span{color:var(--creme)}
+  .topo[data-tema="azul"] nav a:hover{color:var(--preto)}
+  .topo[data-tema="azul"] nav .btn{box-shadow:4px 4px 0 var(--preto);border-color:var(--preto)}
+  .topo[data-tema="azul"] nav .btn:hover{box-shadow:2px 2px 0 var(--preto)}
   @media (max-width:820px){.topo nav a:not(.btn){display:none}}
 
   /* HERO — o pôster */
@@ -290,7 +302,7 @@
 <main id="topo">
 
   <!-- HERO -->
-  <section class="hero" style="padding-bottom:72px">
+  <section data-tema="escuro" class="hero" style="padding-bottom:72px">
     <div class="container">
       <div class="hero__poster">
         <div class="hero__chat" aria-hidden="true">
@@ -317,7 +329,7 @@
   </section>
 
   <!-- PROVA SOCIAL DE LANÇAMENTO -->
-  <section class="prova" id="prova">
+  <section data-tema="claro" class="prova" id="prova">
     <div class="container prova__grade">
       <div class="placa" role="img" aria-label="Mais de R$ 100 mil em vendas">
         <div class="placa__mais">Mais de</div>
@@ -352,7 +364,7 @@
   </section>
 
   <!-- SERVIÇOS -->
-  <section class="servicos" id="servicos">
+  <section data-tema="escuro" class="servicos" id="servicos">
     <div class="container">
       <h2 class="titulo-impresso secao-titulo">O que a gente faz por você</h2>
       <p class="secao-intro">Você continua sendo a dona da sua imagem. A gente monta a operação em volta dela.</p>
@@ -386,7 +398,7 @@
   </section>
 
   <!-- JORNADA DO FÃ -->
-  <section class="jornada" id="jornada">
+  <section data-tema="claro" class="jornada" id="jornada">
     <div class="container">
       <h2 class="titulo-impresso secao-titulo">Do primeiro like ao fã que volta</h2>
       <p class="secao-intro">Toda assinatura passa por quatro etapas. A maioria das criadoras perde dinheiro no meio do caminho, sem nem perceber onde.</p>
@@ -445,7 +457,7 @@
   </section>
 
   <!-- MÉTODO -->
-  <section class="metodo" id="metodo">
+  <section data-tema="azul" class="metodo" id="metodo">
     <div class="container">
       <h2 class="titulo-impresso secao-titulo">Como funciona</h2>
       <ol class="passos">
@@ -470,7 +482,7 @@
   </section>
 
   <!-- TIME -->
-  <section class="time">
+  <section data-tema="claro" class="time">
     <div class="container time__grade">
       <p class="time__citacao">Criadora não precisa de mais seguidor. Precisa de <em>operação.</em></p>
       <div class="time__texto">
@@ -484,7 +496,7 @@
   </section>
 
   <!-- CASTING -->
-  <section class="casting" id="casting">
+  <section data-tema="escuro" class="casting" id="casting">
     <div class="container">
       <h2 class="titulo-impresso">Seja uma Girl</h2>
       <p>Estamos montando o casting fundador da Girl. Poucas vagas, porque cada criadora recebe atenção de verdade.</p>
@@ -500,7 +512,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="faq" id="duvidas">
+  <section data-tema="claro" class="faq" id="duvidas">
     <div class="container">
       <h2 class="titulo-impresso secao-titulo">Dúvidas</h2>
       <div class="faq__lista">
@@ -526,7 +538,7 @@
 
 </main>
 
-<footer class="rodape">
+<footer data-tema="escuro" class="rodape">
   <div class="container">
     <div class="rodape__grade">
       <div>
@@ -556,6 +568,27 @@
     el.target = '_blank';
     el.rel = 'noopener';
   });
+
+  // header muda de cor conforme a seção que está passando por baixo dele
+  (function(){
+    var topo=document.querySelector('.topo');
+    var secoes=[].slice.call(document.querySelectorAll('[data-tema]'));
+    var pendente=false;
+    function atualizar(){
+      pendente=false;
+      var linha=topo.offsetHeight;
+      var tema='escuro';
+      for(var i=0;i<secoes.length;i++){
+        var r=secoes[i].getBoundingClientRect();
+        if(r.top<=linha && r.bottom>linha){tema=secoes[i].getAttribute('data-tema');break;}
+      }
+      if(topo.getAttribute('data-tema')!==tema) topo.setAttribute('data-tema',tema);
+    }
+    function agendar(){ if(!pendente){pendente=true;requestAnimationFrame(atualizar);} }
+    window.addEventListener('scroll',agendar,{passive:true});
+    window.addEventListener('resize',agendar);
+    atualizar();
+  })();
 </script>
 </body>
 </html>
