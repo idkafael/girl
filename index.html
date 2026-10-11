@@ -108,12 +108,12 @@
   /* PROVA */
   .prova{background:var(--creme)}
   .prova__grade{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
-  .placa{position:relative;background:var(--azul);color:var(--creme);border:3px solid var(--preto);box-shadow:12px 12px 0 var(--preto);padding:44px 40px 36px;transform:rotate(-2deg)}
+  .placa{container-type:inline-size;position:relative;background:var(--azul);color:var(--creme);border:3px solid var(--preto);box-shadow:12px 12px 0 var(--preto);padding:44px 40px 36px;transform:rotate(-2deg)}
   .placa::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.25;
     background:radial-gradient(var(--preto) 1.4px, transparent 1.6px) 0 0/8px 8px;
     -webkit-mask:linear-gradient(135deg, transparent 40%, #000);mask:linear-gradient(135deg, transparent 40%, #000)}
   .placa__mais{display:inline-block;font-family:var(--display);font-size:clamp(28px,3.4vw,42px);line-height:1;text-transform:uppercase;background:var(--rosa);color:var(--creme);border:3px solid var(--preto);padding:6px 14px 4px;margin-bottom:14px;transform:rotate(-2deg);position:relative}
-  .placa__valor{font-family:var(--display);font-size:clamp(84px, 14vw, 168px);line-height:.85;position:relative}
+  .placa__valor{font-family:var(--display);font-size:clamp(56px, 14vw, 168px);font-size:25cqi;line-height:.9;white-space:nowrap;position:relative}
   .placa__valor sup{font-size:.36em;vertical-align:top;position:relative;top:.25em;margin-right:6px}
   .placa__prazo{font-family:var(--display);font-size:clamp(30px,4vw,44px);text-transform:uppercase;color:var(--rosa);-webkit-text-stroke:1.5px var(--preto);paint-order:stroke fill;margin-top:6px}
   .placa__nota{font-size:14px;margin-top:22px;opacity:.85;max-width:40ch}
@@ -122,7 +122,7 @@
   .prova__lista{list-style:none;margin-top:28px;border-top:3px solid var(--preto)}
   .prova__lista li{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:16px 0;border-bottom:1.5px solid var(--preto);align-items:baseline}
   .prova__lista b{font-family:var(--display);font-weight:400;font-size:24px;text-transform:uppercase;min-width:6.5ch;color:var(--rosa)}
-  @media (max-width:900px){.prova__grade{grid-template-columns:1fr}.placa{transform:rotate(-1deg);margin-right:12px}}
+  @media (max-width:900px){.prova__grade{grid-template-columns:1fr}.placa{transform:rotate(-1deg);margin-right:12px;text-align:center;padding:36px 22px 30px}.placa__nota{margin-left:auto;margin-right:auto}}
 
   /* print de vendas */
   .print{margin-top:72px}
