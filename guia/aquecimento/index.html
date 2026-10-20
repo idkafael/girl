@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aquecimento de Conta · Guia da Girl</title>
+<meta name="description" content="O passo a passo dos primeiros 8 dias de conta.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guia/guia.css">
+<style>
+  .contas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .contas b{font-weight:800}
+  .contas .ctrl{display:inline-flex;border:3px solid var(--preto);background:#fff}
+  .contas button{font-family:var(--display);font-size:22px;width:42px;height:42px;border:0;background:#fff;cursor:pointer}
+  .contas button:hover{background:var(--preto);color:var(--creme)}
+  .contas output{font-family:var(--display);font-size:24px;width:48px;display:grid;place-items:center;border-left:3px solid var(--preto);border-right:3px solid var(--preto)}
+  .qtd{display:inline-block;min-width:26px;text-align:center;font-weight:800;background:var(--preto);color:var(--creme);padding:0 6px;margin-right:4px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="container">
+    <a class="marca" href="/" aria-label="Girl Agência, início">GIRL<span>.</span></a>
+    <div class="migalha"><a href="/guia/">Guia</a> <span aria-hidden="true">/</span> <b>Aquecimento</b></div>
+  </div>
+</header>
+
+<section class="capa">
+  <div class="container">
+    <span class="selo">Guia 01 · Material exclusivo</span>
+    <h1><span class="z">Aquecimento<br>de conta.</span><span class="eco" aria-hidden="true">Aquecimento<br>de conta.</span></h1>
+    <p class="sub">Os primeiros 8 dias decidem se a conta vai crescer ou travar. Aqui está exatamente o que produzir em cada dia. Marca cada entrega conforme for fazendo. ✨</p>
+  </div>
+</section>
+
+<div class="progresso" aria-live="polite">
+  <div class="container">
+    <div class="barra"><i id="barra"></i></div>
+    <span id="contagem">0 de 0 entregas</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <section class="bloco">
+      <h2>Antes de começar</h2>
+      <ol class="regras">
+        <li><span><b>Os números são por conta.</b> Se o aquecimento tiver mais de uma conta, cada uma recebe a sua entrega. Ex.: dia pede 1 reel e são 3 contas = 3 reels diferentes no dia.</span></li>
+        <li><span><b>Limpe os metadados antes de subir no Drive.</b> Foto e vídeo carregam localização e dados do celular. No iPhone, ao compartilhar toque em <i>Opções</i> e desligue <i>Localização</i>; no Android, apague a localização nos detalhes da foto. Na dúvida, pede o passo a passo no grupo.</span></li>
+        <li><span><b>Constância é tudo.</b> Pular um dia quebra o aquecimento. Se souber que vai ficar sem gravar, adianta e deixa o conteúdo daquele dia pronto antes.</span></li>
+        <li><span><b>Sua única missão é o conteúdo.</b> Postagem, legenda, horário e estratégia ficam com a gente. Capricha na qualidade: luz boa, câmera limpa, ambiente arrumado.</span></li>
+      </ol>
+      <div class="contas">
+        <b>Quantas contas você está aquecendo?</b>
+        <div class="ctrl">
+          <button type="button" id="menos" aria-label="Diminuir">−</button>
+          <output id="nContas">1</output>
+          <button type="button" id="mais" aria-label="Aumentar">+</button>
+        </div>
+      </div>
+      <p class="dica">Os números de cada dia abaixo já se ajustam à quantidade de contas.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>As 3 fases</h2>
+      <div class="fases">
+        <div class="fase"><small>Dias 1 a 4</small><h3>Pré-aquecimento</h3><p>Perfil montado e feed com cara de gente de verdade, só fotos.</p></div>
+        <div class="fase"><small>Dias 5 a 7</small><h3>Aquecimento</h3><p>Entram os reels. A conta começa a ser entregue pro público.</p></div>
+        <div class="fase"><small>Dia 8 em diante</small><h3>Escala</h3><p>Ritmo fixo de reels e stories todo dia. Aqui a conta cresce.</p></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>O que é carrossel</h2>
+      <p><b>1 carrossel = 3 fotos no mesmo ambiente, com poses diferentes.</b> Mesma roupa, mesmo lugar, só muda a pose e o ângulo. Nada de 3 fotos iguais.</p>
+    </section>
+
+    <div id="dias"></div>
+
+    <section class="bloco bloco--azul">
+      <h2>Os 4 destaques</h2>
+      <p>Os stories de destaque montam a vitrine do perfil. Vá alternando entre estes quatro:</p>
+      <div class="destaques" style="margin-top:18px">
+        <div class="destaque"><div class="bola">🔥</div><b>Telegram</b><span>prévias sensuais, sem nudez</span></div>
+        <div class="destaque"><div class="bola">💋</div><b>Eu</b><span>fotos suas</span></div>
+        <div class="destaque"><div class="bola">✨</div><b>Nicho</b><span>a sua persona / profissão</span></div>
+        <div class="destaque"><div class="bola">☕</div><b>Lifestyle</b><span>dia a dia, comida, rolês</span></div>
+      </div>
+    </section>
+
+    <section class="bloco bloco--rosa">
+      <h2>Travou em algo?</h2>
+      <p>Chama a gente no grupo <b>Geral</b>. Conteúdo pronto vai pro grupo <b>Conteúdos</b> e pro Drive, já com os metadados limpos.</p>
+      <p style="margin-top:18px"><button class="zerar" id="zerar" type="button" style="border-color:var(--creme);color:var(--creme)">Zerar meu checklist</button></p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/guia/">← Voltar ao guia</a>
+    <span>Girl Agência · material interno, não compartilhe.</span>
+  </div>
+</footer>
+
+<script>
+  // cada item: [quantidade por conta, texto, detalhe]
+  var DIAS = [
+    {n:"01", fase:"Pré-aquecimento", titulo:"Criação das contas e organização", intro:"Dia de montar a base. Conta criada, Drive organizado e o primeiro conteúdo no ar.",
+      itens:[[1,"foto de perfil","rosto bem visível e boa luz"],[1,"carrossel","3 fotos, mesmo ambiente, poses diferentes"]]},
+    {n:"02", fase:"Pré-aquecimento", titulo:"Início do pré-aquecimento", intro:"A conta precisa parecer viva. Só fotos por enquanto.",
+      itens:[[1,"carrossel","3 fotos, mesmo ambiente, poses diferentes"]]},
+    {n:"03", fase:"Pré-aquecimento", titulo:"Mantendo o ritmo", intro:"Mesmo formato de ontem, ambiente e look diferentes.",
+      itens:[[1,"carrossel","3 fotos, mesmo ambiente, poses diferentes"]]},
+    {n:"04", fase:"Pré-aquecimento", titulo:"Construção da persona", intro:"Hoje o perfil ganha personalidade: primeiros destaques e o primeiro reel.",
+      itens:[[1,"carrossel","3 fotos, mesmo ambiente, poses diferentes"],[2,"stories para destaque","veja os 4 destaques no fim da página"],[1,"reel","vídeo vertical, curto, com você em cena"]]},
+    {n:"05", fase:"Aquecimento", titulo:"Fim do pré-aquecimento, início do aquecimento", intro:"Saem os carrosséis, entram os vídeos. A partir daqui o reel é o principal.",
+      itens:[[1,"reel","vídeo vertical, curto, com você em cena"],[2,"stories para destaque","alterne entre os 4 tipos"]]},
+    {n:"06", fase:"Aquecimento", titulo:"Subindo o volume", intro:"Triplica o reel. Varie cenário, roupa e tipo de vídeo.",
+      itens:[[3,"reels","um diferente do outro"],[2,"stories para destaque","alterne entre os 4 tipos"]]},
+    {n:"07", fase:"Aquecimento", titulo:"Último dia de aquecimento", intro:"Mesmo volume de ontem. Amanhã a conta entra em escala.",
+      itens:[[3,"reels","um diferente do outro"],[2,"stories para destaque","alterne entre os 4 tipos"]]},
+    {n:"08+", fase:"Escala", titulo:"Fim do aquecimento, início da escala", intro:"Esse vira o seu ritmo fixo, todos os dias. Constância aqui é o que faz a conta crescer.",
+      itens:[[3,"reels por dia","um diferente do outro"],[2,"stories para destaque por dia","alterne entre os 4 tipos"]]}
+  ];
+
+  var store = {
+    get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},
+    set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}},
+    del:function(k){try{localStorage.removeItem(k)}catch(e){}}
+  };
+  var CHAVE = "girl-aquecimento-v1";
+  var marcados = {};
+  try{ marcados = JSON.parse(store.get(CHAVE) || "{}") || {}; }catch(e){ marcados = {}; }
+  var contas = parseInt(store.get(CHAVE+"-contas"),10);
+  if(!(contas>=1 && contas<=10)) contas = 1;
+
+  var dias = document.getElementById("dias");
+  DIAS.forEach(function(d, i){
+    var art = document.createElement("article");
+    art.className = "dia"; art.id = "dia-"+(i+1);
+    var lis = d.itens.map(function(it, j){
+      var id = "d"+i+"i"+j;
+      return '<li><label><input type="checkbox" data-id="'+id+'"><span><span class="qtd" data-base="'+it[0]+'">'+it[0]+'</span>'+it[1]+'<small>'+it[2]+'</small></span></label></li>';
+    }).join("");
+    art.innerHTML = '<header><div class="num">'+d.n+'</div><div><div class="fase-tag">'+d.fase+'</div><h3>'+d.titulo+'</h3></div></header>'+
+      '<div class="corpo"><p>'+d.intro+'</p><ul class="tarefas">'+lis+'</ul></div>';
+    dias.appendChild(art);
+  });
+
+  var caixas = [].slice.call(document.querySelectorAll(".tarefas input"));
+  caixas.forEach(function(c){ c.checked = !!marcados[c.dataset.id]; });
+
+  function atualizar(){
+    var feitos = caixas.filter(function(c){return c.checked}).length;
+    document.getElementById("barra").style.width = (caixas.length ? feitos/caixas.length*100 : 0) + "%";
+    document.getElementById("contagem").textContent = feitos + " de " + caixas.length + " entregas";
+    [].forEach.call(document.querySelectorAll(".dia"), function(d){
+      var cs = d.querySelectorAll("input");
+      var ok = [].every.call(cs, function(c){return c.checked});
+      d.classList.toggle("feito", ok);
+    });
+  }
+  function aplicarContas(){
+    document.getElementById("nContas").textContent = contas;
+    [].forEach.call(document.querySelectorAll(".qtd"), function(q){ q.textContent = q.dataset.base * contas; });
+    store.set(CHAVE+"-contas", String(contas));
+  }
+
+  caixas.forEach(function(c){
+    c.addEventListener("change", function(){
+      if(c.checked) marcados[c.dataset.id] = 1; else delete marcados[c.dataset.id];
+      store.set(CHAVE, JSON.stringify(marcados));
+      atualizar();
+    });
+  });
+  document.getElementById("menos").onclick = function(){ if(contas>1){contas--; aplicarContas();} };
+  document.getElementById("mais").onclick = function(){ if(contas<10){contas++; aplicarContas();} };
+  document.getElementById("zerar").onclick = function(){
+    marcados = {}; store.del(CHAVE);
+    caixas.forEach(function(c){ c.checked = false; });
+    atualizar();
+  };
+
+  aplicarContas();
+  atualizar();
+</script>
+</body>
+</html>
