@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conteúdo Bom x Ruim · Guia da Girl</title>
+<meta name="description" content="View não é venda. O que separa o conteúdo que atrai fã que compra do conteúdo que só dá view.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guia/guia.css">
+<style>
+  .versus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:28px}
+  @media (max-width:720px){.versus{grid-template-columns:minmax(0,1fr)}}
+  .lado{border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);padding:24px}
+  .lado h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(30px,6vw,42px);line-height:1;margin-bottom:6px}
+  .lado > p{font-size:15px;margin-bottom:16px}
+  .lado--ruim{background:#fff}
+  .lado--ruim h2{color:var(--tinta)}
+  .lado--bom{background:var(--rosa);color:var(--creme)}
+  .itens{list-style:none;display:grid;gap:14px}
+  .itens li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start}
+  .itens li::before{font-family:var(--display);font-size:20px;line-height:28px;text-align:center;width:28px;height:28px;border:2.5px solid currentColor}
+  .lado--ruim .itens li::before{content:"✕"}
+  .lado--bom .itens li::before{content:"✓"}
+  .itens b{display:block;font-weight:800}
+  .itens span{font-size:15px}
+  .sinais{list-style:none;display:grid;gap:12px;margin-top:6px}
+  .sinais li{background:var(--creme);border-left:6px solid var(--rosa);padding:12px 16px;font-weight:500}
+  .sinais b{font-weight:800}
+  .check{list-style:none;display:grid;gap:10px}
+  .check li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-weight:600}
+  .check li::before{content:"";width:22px;height:22px;border:3px solid currentColor;margin-top:2px}
+  .passos-guia{counter-reset:p;list-style:none;display:grid;gap:14px}
+  .passos-guia li{counter-increment:p;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start}
+  .passos-guia li::before{content:counter(p);font-family:var(--display);font-size:24px;line-height:44px;text-align:center;width:44px;height:44px;background:var(--preto);color:var(--creme)}
+  .bloco--azul .passos-guia li::before{background:var(--creme);color:var(--azul)}
+  .frase{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,6vw,48px);line-height:1;margin:6px 0 14px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="container">
+    <a class="marca" href="/" aria-label="Girl Agência, início"><img src="/img/girl-logo-creme.webp" alt="girl." width="480" height="264" style="height:36px;width:auto;display:block"></a>
+    <div class="migalha"><a href="/guia/">Guia</a> <span aria-hidden="true">/</span> <b>Conteúdo</b></div>
+  </div>
+</header>
+
+<section class="capa">
+  <div class="container">
+    <span class="selo">Guia 02 · Conteúdo</span>
+    <h1><span class="z">View não<br>é venda.</span><span class="eco" aria-hidden="true">View não<br>é venda.</span></h1>
+    <p class="sub">Conta com 300 mil views e nenhuma venda? O problema quase nunca é o funil. É o conteúdo atraindo o público errado. Aqui está o que separa um do outro.</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <section class="bloco">
+      <h2>Como o Insta te enxerga</h2>
+      <p>O Instagram entende o que você posta e decide <b>pra quem</b> entregar. Conteúdo apelativo e genérico é classificado como conteúdo de baixa qualidade, e ele passa a ir pra quem só olha: curioso, público de fora do Brasil, mulher. Muita view, pouco fã.</p>
+      <p>Conteúdo bem feito vai pro público certo: homem que se interessa por <b>você</b>, segue, volta, entra no chat e compra mais de uma vez.</p>
+      <p class="dica">Ter poucos seguidores do público certo vende mais do que muitos do público errado. Tem perfil pequeno faturando mais que perfil com 200 mil.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Sinais de que o público está errado</h2>
+      <ul class="sinais">
+        <li><b>Muita view, zero venda.</b> Vídeo bombando e ninguém indo pro link.</li>
+        <li><b>Público de fora do Brasil.</b> Índia, Paquistão e afins no topo das estatísticas. Se passar da metade do público, é muito difícil reverter.</li>
+        <li><b>Comentários cheios de mulheres.</b> O conteúdo está sendo entregue pro público feminino.</li>
+        <li><b>Vendeu no pico e despencou.</b> Vendeu no mês do viral pelo volume, mas no mês seguinte a renovação caiu.</li>
+      </ul>
+    </section>
+
+    <div class="versus">
+      <section class="lado lado--ruim">
+        <h2>Conteúdo ruim</h2>
+        <p>Dá view, não dá fã. Fuja desses:</p>
+        <ul class="itens">
+          <li><span><b>Vídeo agressivo ou explícito</b>Aquele que começa normal e vira apelativo na transição. O Insta entende e entrega pro público errado.</span></li>
+          <li><span><b>Trend só pelo hype</b>Viraliza, traz volume, mas o público não é qualificado e não volta.</span></li>
+          <li><span><b>Dancinha genérica, sem texto</b>Só áudio e sem legenda abre a entrega pra gringo.</span></li>
+          <li><span><b>Print de conversa de WhatsApp</b>Viraliza pro público feminino e bagunça a conta.</span></li>
+          <li><span><b>Foto parada "apelativa"</b>Foto estática com texto chamando pro conteúdo pesado.</span></li>
+          <li><span><b>Caixinha com pergunta pesada</b>O formato é bom. Pergunta explícita demais, não.</span></li>
+        </ul>
+      </section>
+      <section class="lado lado--bom">
+        <h2>Conteúdo bom</h2>
+        <p>Sutil, com a sua cara. Aposte nesses:</p>
+        <ul class="itens">
+          <li><span><b>Você em movimento</b>Sensualizando sem forçar. Sugere mais do que mostra.</span></li>
+          <li><span><b>Biscoito com a sua persona</b>Vídeo pra chamar atenção, com áudio que combina com você (ex.: gótica com áudio gótico), em primeira ou terceira pessoa.</span></li>
+          <li><span><b>Caixinha de pergunta leve</b>Duplo sentido na medida, mostrando personalidade.</span></li>
+          <li><span><b>Transição de look</b>Funciona muito, e dá pra explorar roupas e fantasias.</span></li>
+          <li><span><b>Frase e meme</b>Romântico, duplo sentido, engraçado. Frase com texto em português segura o público brasileiro.</span></li>
+          <li><span><b>POV e historinha</b>Formato "white" que funciona muito bem quando é você contando.</span></li>
+          <li><span><b>Carrossel com áudio</b>3 fotos ou mais com música têm chance de cair no explorar.</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="bloco bloco--rosa">
+      <p class="frase">Seja influencer, não vitrine.</p>
+      <p>Quem mais vende é quem parece uma influencer de verdade: mostra a rotina, a personalidade e faz conteúdo variado. O fã cria apego e, com apego, ele compra o conteúdo mais caro, paga o chat e renova todo mês.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Como achar conteúdo bom</h2>
+      <ol class="passos-guia">
+        <li><span><b>Scrolle os reels com olhar de pesquisa.</b> Procure criadoras e influencers do seu estilo, inclusive as que não fazem conteúdo adulto. Elas são ótimas referências de formato.</span></li>
+        <li><span><b>Separe os vídeos que mais performaram</b> no perfil delas. Vídeo que bombou é formato validado.</span></li>
+        <li><span><b>Olhe os comentários.</b> Muitos homens comentando: bom sinal. Muitas mulheres: esse formato vai trazer público feminino.</span></li>
+        <li><span><b>Recrie com você.</b> Não é repostar o vídeo dela: é gravar a sua versão do formato, com a sua cara e o seu jeito.</span></li>
+      </ol>
+    </section>
+
+    <section class="bloco bloco--azul">
+      <h2>Teste até acertar</h2>
+      <ol class="passos-guia">
+        <li><span>Teste vários formatos: biscoito, dancinha de trend, frase, caixinha, transição.</span></li>
+        <li><span>Quando um formato funcionar, grave <b>mais vídeos naquele formato</b>, com variações.</span></li>
+        <li><span>Continue testando outros até ter <b>2 ou 3 formatos validados</b>. É isso que faz a conta tracionar.</span></li>
+      </ol>
+    </section>
+
+    <section class="bloco">
+      <h2>A conta já começou errada?</h2>
+      <p>Se a conta cresceu com conteúdo apelativo, o Insta já classificou o perfil e o público já está formado. Mudar o conteúdo depois raramente resolve. Na maioria dos casos, vale mais <b>começar uma conta nova do jeito certo</b>: o começo da conta define o público que ela vai ter.</p>
+      <p style="margin-top:12px">Pra começar do zero, siga o <a href="/guia/aquecimento/" style="font-weight:800">guia de aquecimento</a>.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Checklist antes de postar</h2>
+      <ul class="check">
+        <li>Não é agressivo nem explícito.</li>
+        <li>Mostra quem eu sou: personalidade, estilo, rotina.</li>
+        <li>Tem texto ou legenda em português.</li>
+        <li>O áudio combina com a minha persona.</li>
+        <li>Eu imagino um homem brasileiro parando pra assistir.</li>
+        <li>Não é print de conversa nem trend só pelo hype.</li>
+      </ul>
+    </section>
+
+    <section class="bloco bloco--rosa">
+      <h2>Quer ajuda com isso?</h2>
+      <p><b>Já é uma Girl?</b> Manda o conteúdo no grupo Conteúdos que a gente revisa com você.</p>
+      <p><b>Ainda não é?</b> <a href="https://wa.me/557192926937?text=Oi!%20Vim%20pelo%20guia%20da%20Girl%20%E2%9C%A8" target="_blank" rel="noopener" style="font-weight:800">Chama a gente no WhatsApp</a> e conta como está a sua conta.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/guia/">← Voltar ao guia</a>
+    <span>Girl Agência · a gente cuida da operação, você cuida de ser você.</span>
+  </div>
+</footer>
+
+</body>
+</html>
