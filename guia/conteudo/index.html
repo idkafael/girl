@@ -36,6 +36,12 @@
   .passos-guia li::before{content:counter(p);font-family:var(--display);font-size:24px;line-height:44px;text-align:center;width:44px;height:44px;background:var(--preto);color:var(--creme)}
   .bloco--azul .passos-guia li::before{background:var(--creme);color:var(--azul)}
   .frase{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,6vw,48px);line-height:1;margin:6px 0 14px}
+  .formatos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media (max-width:760px){.formatos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:460px){.formatos{grid-template-columns:minmax(0,1fr)}}
+  .formato{border:3px solid var(--preto);padding:16px;background:var(--creme)}
+  .formato b{display:block;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:28px;line-height:1;margin-bottom:8px}
+  .formato p{font-size:15px}
 </style>
 </head>
 <body>
@@ -89,18 +95,29 @@
       </section>
       <section class="lado lado--bom">
         <h2>Conteúdo bom</h2>
-        <p>Sutil, com a sua cara. Aposte nesses:</p>
+        <p>Sutil, com a sua cara. O que todo conteúdo bom tem:</p>
         <ul class="itens">
-          <li><span><b>Você em movimento</b>Sensualizando sem forçar. Sugere mais do que mostra.</span></li>
-          <li><span><b>Biscoito com a sua persona</b>Vídeo pra chamar atenção, com áudio que combina com você (ex.: gótica com áudio gótico), em primeira ou terceira pessoa.</span></li>
-          <li><span><b>Caixinha de pergunta leve</b>Duplo sentido na medida, mostrando personalidade.</span></li>
-          <li><span><b>Transição de look</b>Funciona muito, e dá pra explorar roupas e fantasias.</span></li>
-          <li><span><b>Frase e meme</b>Romântico, duplo sentido, engraçado. Frase com texto em português segura o público brasileiro.</span></li>
-          <li><span><b>POV e historinha</b>Formato "white" que funciona muito bem quando é você contando.</span></li>
-          <li><span><b>Carrossel com áudio</b>3 fotos ou mais com música têm chance de cair no explorar.</span></li>
+          <li><span><b>Sugere mais do que mostra</b>Sensual sem forçar. Quem quer ver mais vai até o seu perfil.</span></li>
+          <li><span><b>Mostra quem você é</b>Personalidade, humor, estilo. É isso que cria fã, não só seguidor.</span></li>
+          <li><span><b>Tem texto em português</b>Legenda ou frase na tela seguram o público brasileiro.</span></li>
+          <li><span><b>Áudio que combina com a sua persona</b>Gótica com áudio gótico, patricinha com áudio de patricinha.</span></li>
+          <li><span><b>Varia o formato</b>Nada de postar o mesmo tipo de vídeo todo dia. Os formatos que funcionam estão logo abaixo.</span></li>
         </ul>
       </section>
     </div>
+
+    <section class="bloco">
+      <h2>Os formatos que funcionam</h2>
+      <p style="margin-bottom:20px">Teste todos e veja quais pegam no seu perfil.</p>
+      <div class="formatos">
+        <div class="formato"><b>Biscoito</b><p>Vídeo curto pra chamar atenção: você se arrumando, posando, olhando pra câmera. Em primeira ou terceira pessoa, com áudio da sua persona.</p></div>
+        <div class="formato"><b>Transição de look</b><p>Começa de um jeito e troca pra outro look no corte da música. Fantasia e look temático funcionam muito.</p></div>
+        <div class="formato"><b>Caixinha de pergunta</b><p>Você respondendo uma pergunta com humor ou duplo sentido leve. Ex.: "namoraria um cara que tem carro?" e a resposta: "um Peugeot".</p></div>
+        <div class="formato"><b>Dancinha de trend</b><p>Dança de trend que está em alta agora, não qualquer dancinha genérica. Com texto na tela fica ainda melhor.</p></div>
+        <div class="formato"><b>Frase</b><p>Você numa cena simples com uma frase na tela: romântica, carente, de duplo sentido ou bem "real". Gera identificação e comentário.</p></div>
+        <div class="formato"><b>Meme + white</b><p>Meme do momento com você no lugar. Sem pretensão nenhuma, mostra personalidade e faz o cara entrar no perfil pra conhecer mais.</p></div>
+      </div>
+    </section>
 
     <section class="bloco bloco--rosa">
       <p class="frase">Seja influencer, não vitrine.</p>
