@@ -341,13 +341,21 @@
   .guia-card--breve{background:transparent;color:var(--creme);border:3px dashed var(--creme);box-shadow:none;display:flex;flex-direction:column;justify-content:center}
   .guia-card--breve:hover{transform:none;box-shadow:none}
   .guia-card--breve h3{font-size:clamp(28px,4vw,40px)}
+
+  /* logo em imagem */
+  .marca--img{display:flex;align-items:center}
+  .marca--img .logo{height:44px;width:auto;display:block}
+  .logo--preto{display:none !important}
+  .topo[data-tema="claro"] .logo--creme{display:none !important}
+  .topo[data-tema="claro"] .logo--preto{display:block !important}
+  .rodape__logo{height:72px;width:auto;display:block;margin-bottom:14px}
 </style>
 </head>
 <body>
 
 <header class="topo">
   <div class="container">
-    <a class="marca" href="#topo" aria-label="Girl Agência, início">GIRL<span>.</span></a>
+    <a class="marca marca--img" href="#topo" aria-label="Girl Agência, início"><img class="logo logo--creme" src="/img/girl-logo-creme.webp" alt="girl." width="480" height="264"><img class="logo logo--preto" src="/img/girl-logo-preto.webp" alt="" aria-hidden="true" width="480" height="264"></a>
     <nav aria-label="Principal">
       <a href="#prova">Quem somos</a>
       <a href="#servicos">O que fazemos</a>
@@ -644,7 +652,7 @@
   <div class="container">
     <div class="rodape__grade">
       <div>
-        <span class="marca">GIRL<span style="color:var(--rosa)">.</span></span>
+        <img class="rodape__logo" src="/img/girl-logo-creme.webp" alt="girl." width="480" height="264">
         <p>Gestão de carreira para criadoras de conteúdo.</p>
       </div>
       <div class="rodape__links">
