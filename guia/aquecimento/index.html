@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="/guia/guia.css">
 <style>
   .fases--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .dia .num{padding:8px 12px 6px}
+  .dia .num small{display:block;font-family:var(--texto);font-weight:800;font-size:13px;letter-spacing:.22em;text-transform:uppercase;line-height:1;margin-bottom:4px}
   @media (max-width:760px){.fases--4{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:420px){.fases--4{grid-template-columns:minmax(0,1fr)}}
 </style>
@@ -49,7 +51,6 @@
         <li><span><b>Não pula etapa.</b> Pressa é o que mais derruba conta nova. Cada dia prepara o próximo. Se furar um dia, continua de onde parou.</span></li>
         <li><span><b>Nada de link na bio da conta principal.</b> Link da 🍊 e do Telegram já são mal vistos pelo Insta. Os links ficam numa conta separada, que a gente monta com você.</span></li>
         <li><span><b>Use como uma pessoa normal.</b> Sem maratona de curtidas, sem seguir dezenas de perfis de uma vez. Com calma, do jeito que qualquer pessoa usaria.</span></li>
-        <li><span><b>Limpe os metadados antes de mandar conteúdo pro Drive.</b> No iPhone, ao compartilhar toque em <i>Opções</i> e desligue <i>Localização</i>; no Android, apague a localização nos detalhes da foto.</span></li>
       </ol>
     </section>
 
@@ -122,7 +123,7 @@
       var id = "d"+i+"i"+j;
       return '<li><label><input type="checkbox" data-id="'+id+'"><span>'+it[0]+(it[1] ? '<small>'+it[1]+'</small>' : '')+'</span></label></li>';
     }).join("");
-    art.innerHTML = '<header><div class="num">'+d.n+'</div><div><div class="fase-tag">'+d.fase+'</div><h3>'+d.titulo+'</h3></div></header>'+
+    art.innerHTML = '<header><div class="num"><small>Dia</small>'+d.n+'</div><div><div class="fase-tag">'+d.fase+'</div><h3>'+d.titulo+'</h3></div></header>'+
       '<div class="corpo"><p>'+d.intro+'</p><ul class="tarefas">'+lis+'</ul></div>';
     dias.appendChild(art);
   });
