@@ -1,0 +1,47 @@
+name: painel
+
+on:
+  push:
+    branches: [main]
+    paths: ["painel/**", ".github/workflows/painel.yml"]
+    tags: ["painel-v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: painel
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instala o Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: painel
+      - name: Compila o .exe
+        run: cargo build --release
+      - name: Monta o pacote
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item target\release\GirlPainel.exe dist\
+          Copy-Item LEIA-ME.txt dist\
+          Compress-Archive -Path dist\* -DestinationPath GirlPainel.zip -Force
+      - name: Artefato (baixe aqui a cada build)
+        uses: actions/upload-artifact@v4
+        with:
+          name: GirlPainel
+          path: painel/GirlPainel.zip
+      - name: Release (quando tiver tag painel-v*)
+        if: startsWith(github.ref, 'refs/tags/painel-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            painel/GirlPainel.zip
+            painel/target/release/GirlPainel.exe

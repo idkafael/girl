@@ -1,0 +1,25 @@
+GIRL · PAINEL
+=============
+
+Um navegador separado pra cada criadora, isolado do seu Chrome pessoal.
+
+COMO USAR
+1. Extraia esta pasta onde quiser (ex.: Documentos\Girl Painel). Nao precisa instalar.
+2. De dois cliques em GirlPainel.exe.
+3. Clique em "Abrir" no card de uma criadora: abre um navegador so dela.
+   Na primeira vez abre Instagram, Privacy e Telegram. Voce loga uma vez.
+   Das proximas, volta de onde parou.
+
+ADICIONAR / REMOVER
+- Digite o nome embaixo e clique em Adicionar.
+- O "x" no card tira do painel (nao apaga os logins salvos).
+- A lista fica no arquivo criadoras.json, na mesma pasta. Da pra editar na mao.
+
+OBSERVACOES
+- Todas as criadoras usam o mesmo Chrome, cada uma com perfil proprio -> gasta pouca RAM.
+- Se nao tiver Chrome, ele usa o Edge automaticamente.
+- Os perfis ficam em: %LOCALAPPDATA%\GirlPainel\Chrome
+- Sem proxy e sem fingerprint: e so um lancador dos perfis do navegador.
+
+Se o Windows avisar "O Windows protegeu o computador", clique em
+Mais informacoes -> Executar assim mesmo (acontece so na primeira vez).
