@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatter · Guia da Girl</title>
+<meta name="description" content="O chat é onde o dinheiro é feito. Mentalidade, conexão, qualificação e a escadinha: o passo a passo de um chatter que converte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/guia/guia.css">
+<style>
+  /* índice */
+  .indice{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  @media (max-width:560px){.indice{grid-template-columns:minmax(0,1fr)}}
+  .indice a{display:flex;gap:10px;align-items:baseline;text-decoration:none;font-weight:600;font-size:15px;padding:8px 10px;border:2px solid var(--preto);background:var(--creme)}
+  .indice a:hover{background:var(--preto);color:var(--creme)}
+  .indice a b{font-family:var(--display);font-weight:400;font-size:18px;color:var(--rosa)}
+  /* versus */
+  .versus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:28px}
+  @media (max-width:720px){.versus{grid-template-columns:minmax(0,1fr)}}
+  .lado{border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);padding:24px}
+  .lado h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,6vw,40px);line-height:1;margin-bottom:6px}
+  .lado > p{font-size:15px;margin-bottom:16px}
+  .lado--ruim{background:#fff}
+  .lado--ruim h2{color:var(--tinta)}
+  .lado--bom{background:var(--rosa);color:var(--creme)}
+  .itens{list-style:none;display:grid;gap:14px}
+  .itens li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start}
+  .itens li::before{font-family:var(--display);font-size:18px;line-height:26px;text-align:center;width:26px;height:26px;border:2.5px solid currentColor}
+  .lado--ruim .itens li::before{content:"✕"}
+  .lado--bom .itens li::before{content:"✓"}
+  .itens b{display:block;font-weight:800}
+  .itens span{font-size:15px}
+  /* passos */
+  .passos-guia{counter-reset:p;list-style:none;display:grid;gap:14px}
+  .passos-guia li{counter-increment:p;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start}
+  .passos-guia li::before{content:counter(p);font-family:var(--display);font-size:24px;line-height:44px;text-align:center;width:44px;height:44px;background:var(--preto);color:var(--creme)}
+  .bloco--azul .passos-guia li::before{background:var(--creme);color:var(--azul)}
+  .passos-guia b{font-weight:800}
+  /* frase destaque */
+  .frase{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,6vw,46px);line-height:1;margin:6px 0 14px}
+  /* tipos de assinante */
+  .tipos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:6px}
+  @media (max-width:560px){.tipos{grid-template-columns:minmax(0,1fr)}}
+  .tipo{border:3px solid var(--preto);padding:16px;background:var(--creme)}
+  .tipo b{display:block;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:24px;line-height:1;margin-bottom:6px}
+  .tipo p{font-size:15px}
+  .tipo.foco{background:var(--rosa);color:var(--creme)}
+  /* perguntas de conexão */
+  .perguntas{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+  @media (max-width:560px){.perguntas{grid-template-columns:minmax(0,1fr)}}
+  .perguntas li{background:var(--creme);border-left:6px solid var(--rosa);padding:10px 14px;font-weight:600;font-size:15px}
+  .perguntas li small{display:block;font-weight:400;opacity:.8;font-size:13px;margin-top:2px}
+  /* escadinha */
+  .escada{display:grid;gap:10px;margin-top:8px}
+  .degrau{display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:14px;align-items:center;border:3px solid var(--preto);background:#fff;padding:12px 16px}
+  .degrau .n{font-family:var(--display);font-size:30px;line-height:1;background:var(--preto);color:var(--creme);width:46px;height:46px;display:grid;place-items:center}
+  .degrau .o b{display:block;font-weight:800;font-size:16px}
+  .degrau .o span{font-size:14px;opacity:.85}
+  .degrau .pr{font-family:var(--display);font-weight:400;font-size:clamp(18px,4vw,24px);color:var(--rosa);white-space:nowrap}
+  .degrau:nth-child(1){margin-left:0}
+  .degrau:nth-child(2){margin-left:min(4%,40px)}
+  .degrau:nth-child(3){margin-left:min(8%,80px)}
+  .degrau:nth-child(4){margin-left:min(12%,120px)}
+  .degrau:nth-child(5){margin-left:min(16%,160px)}
+  @media (max-width:640px){.degrau{margin-left:0!important;grid-template-columns:44px minmax(0,1fr);row-gap:4px}.degrau .pr{grid-column:2;text-align:left}}
+  /* ciclo */
+  .ciclo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .ciclo span{font-weight:800;background:var(--creme);border:2px solid var(--preto);padding:8px 14px;font-size:14px}
+  .ciclo span.pulo{background:var(--rosa);color:var(--creme)}
+  .ciclo i{font-family:var(--display);color:var(--rosa);font-size:20px;font-style:normal}
+  /* check */
+  .check{list-style:none;display:grid;gap:10px}
+  .check li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-weight:600}
+  .check li::before{content:"";width:22px;height:22px;border:3px solid currentColor;margin-top:2px;flex:none}
+  /* exemplo de conversa */
+  .chat{display:grid;gap:8px;margin-top:8px}
+  .msg{max-width:84%;padding:10px 14px;border:2.5px solid var(--preto);font-size:15px;line-height:1.4}
+  .msg.ela{justify-self:start;background:var(--rosa);color:var(--creme);border-bottom-left-radius:0}
+  .msg.ele{justify-self:end;background:#fff;border-bottom-right-radius:0}
+  .msg small{display:block;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="container">
+    <a class="marca" href="/" aria-label="Girl Agência, início"><img src="/img/girl-logo-creme.webp" alt="girl." width="480" height="264" style="height:36px;width:auto;display:block"></a>
+    <div class="migalha"><a href="/guia/">Guia</a> <span aria-hidden="true">/</span> <b>Chatter</b></div>
+  </div>
+</header>
+
+<section class="capa">
+  <div class="container">
+    <span class="selo">Guia 03 · Chatter</span>
+    <h1><span class="z">Não venda.<br>Conduza.</span><span class="eco" aria-hidden="true">Não venda.<br>Conduza.</span></h1>
+    <p class="sub">O feed é a vitrine. O chat é o caixa. É aqui que o dinheiro é feito, de verdade. 💬</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <section class="bloco">
+      <h2>O que você vai aprender</h2>
+      <ul class="indice">
+        <li><a href="#jogo"><b>01</b> O jogo: conexão, não conteúdo</a></li>
+        <li><a href="#mentalidade"><b>02</b> Sardinha x Matador</a></li>
+        <li><a href="#preparar"><b>03</b> Antes de digitar</a></li>
+        <li><a href="#primeiras"><b>04</b> As primeiras mensagens</a></li>
+        <li><a href="#conexao"><b>05</b> Conexão e qualificação</a></li>
+        <li><a href="#tipos"><b>06</b> Os 4 tipos de assinante</a></li>
+        <li><a href="#escada"><b>07</b> A escadinha</a></li>
+        <li><a href="#ppv"><b>08</b> Como soltar o PPV</a></li>
+        <li><a href="#personalizado"><b>09</b> Conteúdo personalizado</a></li>
+        <li><a href="#objecoes"><b>10</b> Objeções de preço</a></li>
+        <li><a href="#fechamento"><b>11</b> Fechamento e recorrência</a></li>
+        <li><a href="#followup"><b>12</b> Sumiu? Reativação</a></li>
+      </ul>
+    </section>
+
+    <section class="bloco" id="jogo">
+      <h2>O jogo: conexão, não conteúdo</h2>
+      <p>A operação de uma conta tem duas partes: o <b>feed</b> (a vitrine, que vende sozinho) e o <b>chat</b> (onde a gente concentra a energia e faz a maior parte do dinheiro). Seu trabalho é no chat.</p>
+      <p>E a regra número um do chat é esta: o cara não paga por um vídeo. Ele paga pela <b>sensação de que a modelo está ali, ao vivo, só pra ele.</b> Se fosse mídia solta e aleatória, ele não pagaria esse valor. O valor vem da conexão que você constrói.</p>
+      <p class="dica">Se tivesse uma frase pra tatuar: <b>“A gente não vende conteúdo. A gente vende conexão.”</b></p>
+    </section>
+
+    <section class="bloco bloco--rosa">
+      <p class="frase">90% do dinheiro vem de 10% dos caras.</p>
+      <p>Um assinante que gasta R$1.000 vale mais do que 20 caras gastando R$5. Esses grandes compradores são as <b>baleias</b>. Seu foco não é vender pra todo mundo: é qualificar, achar a baleia e nutrir essa relação. Pare de gritar “2 por 1” como camelô. Pense como vendedor de joalheria, não como ambulante.</p>
+    </section>
+
+    <section id="mentalidade">
+      <div class="versus">
+        <section class="lado lado--ruim">
+          <h2>Modo sardinha</h2>
+          <p>O jeito errado. Queima o lead na hora:</p>
+          <ul class="itens">
+            <li><span><b>“Oi amor, tô molhada, quer ver?”</b>Joga o PPV de cara, por R$20, e o cara some.</span></li>
+            <li><span><b>Parece um robô</b>Copia e cola a mesma frase pra todo mundo.</span></li>
+            <li><span><b>Trata todo assinante igual</b>Não qualifica, não entende o que o cara quer.</span></li>
+            <li><span><b>Empurra venda</b>O cara se sente num assédio de vendedor e trava.</span></li>
+          </ul>
+        </section>
+        <section class="lado lado--bom">
+          <h2>Modo matador</h2>
+          <p>O jeito certo. Seduz, qualifica e conduz:</p>
+          <ul class="itens">
+            <li><span><b>Faz perguntas, cria tensão</b>Deixa o cara achar que a ideia foi dele.</span></li>
+            <li><span><b>Soa como a modelo</b>Mesmo tom, mesmas gírias. O cara nem desconfia.</span></li>
+            <li><span><b>Lê cada assinante</b>Descobre o gatilho emocional de cada um.</span></li>
+            <li><span><b>A venda é consequência</b>Vira um loop de GFE: 3+ PPVs e comprador recorrente.</span></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="bloco" id="preparar">
+      <h2>Antes de digitar</h2>
+      <p>O maior motivo de chatter falhar é não <b>soar como a garota</b>. O cara pode seguir ela há meses: conhece o jeito de falar, o humor, as gírias. Se a sua primeira mensagem parecer texto de robô, você quebra a confiança na hora. Antes de mandar <b>uma única mensagem</b>, faça o dever de casa:</p>
+      <ol class="passos-guia">
+        <li><span><b>Revise o questionário da modelo.</b> Nome/apelido usado no chat, de onde ela é, como ela fala, comidas e séries favoritas, estilo de flerte e — essencial — <b>o que ela grava e o que ela NÃO grava</b>, e os limites dela.</span></li>
+        <li><span><b>Leia o histórico de conversa.</b> As conversas mais importantes, as baleias antigas, pedidos personalizados em andamento e o tom já usado no chat. Você está entrando no meio de uma história, não começando do zero.</span></li>
+        <li><span><b>Veja as redes dela.</b> Os últimos stories, reels e posts. Se ela postou “tô cansada hoje, nem fala comigo” há 3 horas, o cara viu. Ignorar isso denuncia que não é ela.</span></li>
+      </ol>
+      <p class="dica"><b>Checklist de voz:</b> tom (meiga / provocadora / tranquila), usa emoji? (muito / pouco / nada), palavrão? (sim / não / raramente), gíria (gen z / latina / madura), como flerta (direta / inocente / jogo de poder), ritmo da escalada (rápido / lento / GFE). Deixe aberto enquanto conversa.</p>
+    </section>
+
+    <section class="bloco" id="primeiras">
+      <h2>As primeiras mensagens</h2>
+      <p>Quando o cara assina, cai uma <b>mensagem automática de boas-vindas</b>, definida pela persona da modelo. Logo depois, o chatter manda uma <b>mensagem manual</b> — e é ela que dispara a resposta. Nunca comece oferecendo conteúdo pago.</p>
+      <div class="chat">
+        <div class="msg ela"><small>Automática · persona inocente</small>Oiii, que bom ter você aqui comigo. Aqui é onde a gente conversa sobre tudo! (prometo não encher seu saco, rs) 😚</div>
+        <div class="msg ela"><small>Manual · logo em seguida</small>Oi [nome], tudo bem? 🥰</div>
+      </div>
+      <p style="margin-top:14px"><b>Por que a segunda mensagem?</b> Muito assinante já sabe que a primeira é automática. A manual, com o nome dele, mostra que tem gente de verdade ali pra conversar — e aumenta MUITO a chance de resposta. Variações que humanizam:</p>
+      <ul class="itens" style="margin-top:12px">
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Erro proposital corrigido</b>“Como voxê tá?” → “você**”. Robô não erra e corrige. Isso humaniza na hora.</span></li>
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Direto ao ponto / jogo</b>“Ei amor, vamos jogar um joguinho? Se adivinhar a cor da calcinha que tô usando, te mando um presentinho rs.” Muitos já chegam com tesão: vale o teste.</span></li>
+      </ul>
+      <p class="dica">O objetivo dessas primeiras mensagens <b>não é excitar</b>. É clickbait: fazer o cara clicar e responder. A partir daí ele cai no funil — e se o funil estiver bem lapidado, a gente vende.</p>
+    </section>
+
+    <section class="bloco bloco--azul" id="conexao">
+      <h2>Conexão e qualificação</h2>
+      <p>Antes de vender qualquer coisa, você precisa entender <b>quem é o cara</b> — tanto pra criar conexão quanto pra saber quanto ele pode gastar. Puxe essas informações numa conversa <b>natural</b>, nunca como um formulário. Ele não pode perceber que está sendo sondado.</p>
+      <ul class="perguntas">
+        <li>Com o que você trabalha?<small>Profissão estável = mais poder de compra.</small></li>
+        <li>Quantos anos você tem?<small>Mais velho costuma ter mais estabilidade.</small></li>
+        <li>De onde você é?<small>Região dá pista do poder aquisitivo.</small></li>
+        <li>É solteiro ou casado?<small>Casado há anos → muitas vezes falta variedade.</small></li>
+        <li>Tem filhos? Como é a rotina?<small>Abre ganchos de conexão e de fantasia.</small></li>
+        <li>Onde passa as férias? Que carro dirige?<small>Leitura direta de quanto ele pode gastar.</small></li>
+      </ul>
+      <p style="margin-top:16px"><b>Use o que ele responde.</b> Ele diz “sou de São Paulo” → “Sério? Tenho um tio aí, sempre manda presente maluco no Natal.” A conexão nasce da familiaridade. E flerte leve vale mais que estar sempre disponível: “Você torce pro Fluminense? Hmm… vou ter que te provocar por isso.”</p>
+    </section>
+
+    <section class="bloco">
+      <h2>A necessidade por trás do assinante</h2>
+      <p>Quase todo cara que assina tem uma <b>necessidade humana não atendida</b>. Descubra qual é e direcione a conversa pra ela — é isso que faz ele gastar mais.</p>
+      <div class="tipos">
+        <div class="tipo"><b>Variedade</b><p>Casado há anos, mesmo emprego há décadas. Falta novidade: ofereça role play, cenários e poses diferentes.</p></div>
+        <div class="tipo"><b>Conexão / amor</b><p>Nunca teve relação íntima. Faça perguntas, seja empática, deixe ele entrar na “vida pessoal” da modelo.</p></div>
+        <div class="tipo"><b>Significado</b><p>Quer se sentir especial e único. Faça ele sentir que é diferente dos outros assinantes.</p></div>
+        <div class="tipo"><b>Certeza</b><p>Busca segurança e garantia. Constância e atenção previsível seguram esse cara.</p></div>
+      </div>
+      <p class="dica">Anote a necessidade principal de cada um nas notas da conversa. Quanto mais você supre o que falta pra ele, mais ele investe.</p>
+    </section>
+
+    <section class="bloco" id="tipos">
+      <h2>Os 4 tipos de assinante</h2>
+      <p>Nos primeiros 10–15 mensagens você já consegue classificar com quem está falando. Regra profissional: <b>não gaste mais de 30 minutos com quem não gastaria nem R$5.</b></p>
+      <div class="tipos">
+        <div class="tipo foco"><b>Excitado</b><p>Já muito interessado, quer comprar rápido. Conduza direto pro funil.</p></div>
+        <div class="tipo foco"><b>Atraído</b><p>Gostou da modelo mas ainda não decidiu gastar. Aqueça e qualifique.</p></div>
+        <div class="tipo"><b>Curioso</b><p>Interessado no perfil, sem foco em comprar. Vale pouco tempo até dar sinal.</p></div>
+        <div class="tipo"><b>Perda de tempo</b><p>Só quer atenção ou conteúdo grátis. Responde com uma palavra, só pede encontro, negocia tudo. Não invista.</p></div>
+      </div>
+      <p style="margin-top:16px"><b>A baleia</b> é o assinante disposto a gastar R$1.000+. Sinais: já tem experiência na plataforma, diz que você é “diferente”, se envolve emocionalmente na conversa, escreve mensagens longas. Teste final: ofereça algo mais caro (R$100+). Comprou? Provável baleia. Marque ela e nutra a relação.</p>
+    </section>
+
+    <section class="bloco" id="escada">
+      <h2>A escadinha</h2>
+      <p>Esse é o coração do chat. Você <b>não</b> solta o conteúdo mais quente de cara. Você monta uma sessão como se fosse um <b>filme</b>: cada degrau sobe um pouco a intensidade e o preço, aproveitando a tensão do anterior. Não pule da etapa 1 pra 4.</p>
+      <div class="escada">
+        <div class="degrau"><div class="n">1</div><div class="o"><b>Provocação leve</b><span>Deitada, sem nudez. Começa a história (ex.: “vou tomar um banho”).</span></div><div class="pr">R$10–15</div></div>
+        <div class="degrau"><div class="n">2</div><div class="o"><b>Sensual, insinuante</b><span>Mostra um pouco mais, ainda sem revelar o principal.</span></div><div class="pr">R$15–25</div></div>
+        <div class="degrau"><div class="n">3</div><div class="o"><b>Sem roupa, provocação</b><span>Sobe o clima. Legenda caprichada pra aumentar a conversão.</span></div><div class="pr">R$60–100</div></div>
+        <div class="degrau"><div class="n">4</div><div class="o"><b>Vídeo curto</b><span>Até 1 min. A história segue (ex.: “entrando no chuveiro”).</span></div><div class="pr">R$100–150</div></div>
+        <div class="degrau"><div class="n">5</div><div class="o"><b>Clímax</b><span>Último vídeo da sessão. O topo da escadinha.</span></div><div class="pr">R$200+</div></div>
+      </div>
+      <p style="margin-top:18px"><b>O ciclo que se repete até o clímax:</b></p>
+      <div class="ciclo">
+        <span>Aquece</span><i>→</i><span class="pulo">PPV</span><i>→</i><span>Aquece</span><i>→</i><span class="pulo">PPV mais caro</span><i>→</i><span>Aquece</span><i>→</i><span>…</span>
+      </div>
+      <p style="margin-top:16px">Entre um PPV e outro, <b>quebre o clima</b> um pouco: faça uma pergunta, relaxe, e depois volte a transicionar pro sexual pra não perder o fluxo. Você controla a conversa. E trabalhe sempre a <b>legenda</b> do PPV — é ela que faz o cara sentir que precisa desbloquear.</p>
+    </section>
+
+    <section class="bloco" id="ppv">
+      <h2>Como soltar o PPV</h2>
+      <p>O erro é soltar o pago cedo demais. Antes do desbloqueio, o objetivo é fazer o cara <b>investir atenção e esforço</b> na conversa. Deixe ele puxar pro lado sexual primeiro.</p>
+      <ol class="passos-guia">
+        <li><span><b>Prepare o terreno com clima.</b> Frases que fazem ele imaginar a cena sem você forçar: “fiquei deitada na cama por muuito tempo hoje…”, “tava suando demais depois da academia…”.</span></li>
+        <li><span><b>Deixe ele dar o primeiro passo.</b> Quando ele vier (“queria te ver nessa cama…”), responda com provocação, não com PPV: “hmmm, você é problema, hein?”, “cuidado com o que você pede…”.</span></li>
+        <li><span><b>Suba o clima com 2–3 respostas.</b> Depois solte o PPV com uma legenda que peça reação.</span></li>
+        <li><span><b>Primeiro PPV barato (R$15–29,90)</b> pra testar a taxa de resposta. Legendas que já assumem que ele vai amar: “foi isso que eu tava imaginando… me diz se acertei 😈”.</span></li>
+      </ol>
+      <p style="margin-top:14px"><b>Cada PPV puxa o próximo:</b> “eu ainda não terminei com você…”, “aposto que o próximo vai te deixar sem fôlego…”. O áudio no meio do funil aumenta muito a conversão — use.</p>
+    </section>
+
+    <section class="bloco" id="personalizado">
+      <h2>Conteúdo personalizado</h2>
+      <p>Conteúdo sob encomenda é mais caro e fecha sessões grandes com quem gasta mais. Primeiro, faça ele <b>descrever</b> o que quer — quanto mais ele detalha, mais envolvido fica com a ideia: “se eu fizesse algo só pra você, o que gostaria de ver? Qual roupa? Quanto tempo?”</p>
+      <ol class="passos-guia">
+        <li><span><b>Peça alto primeiro.</b> Ancore num valor acima do que espera fechar.</span></li>
+        <li><span><b>Dê um motivo pra baixar.</b> “Normalmente isso é R$2.000, mas fui com a sua cara… faço por R$1.200.” Nunca dê desconto sem contexto.</span></li>
+        <li><span><b>Feche no agora.</b> “Então, se eu deixar por R$1.000… você fecha agora?”</span></li>
+      </ol>
+      <p class="dica">Tudo depende do que a modelo topa gravar. Confirme com ela <b>antes</b> de prometer qualquer coisa ao cliente.</p>
+    </section>
+
+    <section class="bloco" id="objecoes">
+      <h2>Objeções de preço</h2>
+      <div class="chat">
+        <div class="msg ele"><small>Cliente</small>tá caro demais</div>
+        <div class="msg ela"><small>Você</small>Ué, você não acha que eu valho isso? 😏</div>
+        <div class="msg ele"><small>Cliente</small>tem como fazer por R$10?</div>
+        <div class="msg ela"><small>Você</small>Talvez… mas só porque nós dois gostamos de [interesse em comum].</div>
+      </div>
+      <p style="margin-top:14px">A regra é simples: <b>sempre dê um motivo</b> pra baixar o preço. Desconto sem contexto desvaloriza a modelo e vicia o cara em pechinchar.</p>
+    </section>
+
+    <section class="bloco bloco--rosa" id="fechamento">
+      <h2>Fechamento e recorrência</h2>
+      <p>Depois do último PPV, <b>não suma</b>. É aí que você mantém o cara ligado emocionalmente e garante que ele volta amanhã:</p>
+      <ul class="itens" style="margin-top:6px">
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Feche com carinho</b>“Nossa… eu precisava disso. Você acabou comigo.” / “É melhor você voltar amanhã, ainda não terminei com você.”</span></li>
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Cuide do cara</b>Quando ele dá sinal de que chegou no limite (“você vai me deixar pobre”), segure. A gente não quebra o cliente — a gente quer ele de volta amanhã e na semana que vem.</span></li>
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Janela de 30 min</b>Logo após a primeira compra ele está mais propenso a comprar de novo. Responda rápido e ofereça o próximo.</span></li>
+      </ul>
+    </section>
+
+    <section class="bloco" id="followup">
+      <h2>Sumiu? Reativação</h2>
+      <p>Bom humor é obrigatório — ninguém quer conversar com gente chata. Se o PPV não foi desbloqueado ou o cara sumiu online, reative sem peso:</p>
+      <ul class="itens">
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Não desbloqueou</b>Foto fofa da modelo com carinha de choro (editada, de brincadeira) + “tô aqui te esperando, se você ainda se importa 🥺” e já emenda um 😂 pra leveza.</span></li>
+        <li style="grid-template-columns:30px minmax(0,1fr)"><span><b>Ficou online e parou de responder</b>“Meu Deus, não me diz que sua conta foi banida 😨” — cria uma interrogação na cabeça dele e puxa a resposta de volta.</span></li>
+      </ul>
+      <p class="dica">Seja leve, extrovertida e brincalhona. É isso que gera afeto, constrói conexão e, no fim, vende.</p>
+    </section>
+
+    <section class="bloco bloco--azul">
+      <h2>As regras de ouro</h2>
+      <ul class="check">
+        <li>Soo como a modelo, não como um robô.</li>
+        <li>Crio conexão antes de tentar vender qualquer coisa.</li>
+        <li>Qualifico: descubro profissão, rotina e poder de compra de forma natural.</li>
+        <li>Foco nas baleias — 90% vem de 10% dos caras.</li>
+        <li>Subo a escadinha, não pulo degraus.</li>
+        <li>Trabalho a legenda de todo PPV.</li>
+        <li>Nunca quebro o cliente: penso em recorrência.</li>
+        <li>Estou sempre de bom humor.</li>
+        <li>Testo coisas novas e nunca repito o mesmo roteiro por um mês.</li>
+      </ul>
+    </section>
+
+    <section class="bloco bloco--rosa">
+      <h2>Quer evoluir no chat?</h2>
+      <p><b>Já é uma Girl?</b> Fala com a gente no grupo de chatters que a gente acompanha suas conversas e ajusta junto.</p>
+      <p><b>Ainda não é?</b> <a href="https://wa.me/557192926937?text=Oi!%20Vim%20pelo%20guia%20da%20Girl%20%E2%9C%A8" target="_blank" rel="noopener" style="font-weight:800">Chama a gente no WhatsApp</a>. 💬</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="/guia/">← Voltar ao guia</a>
+    <span>Girl Agência · a gente cuida da operação, você cuida de ser você.</span>
+  </div>
+</footer>
+
+</body>
+</html>
