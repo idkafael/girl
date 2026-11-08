@@ -4,8 +4,14 @@
 // GET  /api/entregas?roteiro=jv               -> { ok, itens: {...} }
 // POST /api/entregas  { roteiro, id, feito }  -> { ok, itens: {...} }
 
-const URL_REDIS = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Aceita qualquer prefixo escolhido na Vercel (KV_, STORAGE_, UPSTASH_REDIS_...).
+function acharEnv(fim, preferidos) {
+  for (const k of preferidos) if (process.env[k]) return process.env[k];
+  const k = Object.keys(process.env).find((n) => n.endsWith(fim) && !n.includes("READ_ONLY"));
+  return k ? process.env[k] : undefined;
+}
+const URL_REDIS = acharEnv("_REST_API_URL", ["KV_REST_API_URL", "UPSTASH_REDIS_REST_URL"]) || process.env.UPSTASH_REDIS_REST_URL;
+const TOKEN = acharEnv("_REST_API_TOKEN", ["KV_REST_API_TOKEN", "UPSTASH_REDIS_REST_TOKEN"]) || process.env.UPSTASH_REDIS_REST_TOKEN;
 const NOME = /^[a-z0-9-]{1,40}$/;
 
 async function redis(...cmd) {
