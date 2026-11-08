@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roteiro JV · Girl Agência</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --preto:#000; --rosa:#E6007E; --azul:#1F3BFF; --creme:#F3E9D2; --tinta:#1A1A1A; --branco:#fff;
+    --display:Anton, Impact, "Arial Narrow", sans-serif;
+    --texto:Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--creme);color:var(--tinta);font-family:var(--texto);font-size:15px;line-height:1.5}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+  /* topo */
+  .topo{background:var(--preto);color:var(--creme);border-bottom:4px solid var(--rosa)}
+  .topo .wrap{padding-top:28px;padding-bottom:28px}
+  .marca{font-family:var(--display);font-size:20px;letter-spacing:.5px}
+  .marca b{color:var(--rosa);font-weight:400}
+  .tag{display:inline-block;margin-top:14px;background:var(--rosa);color:var(--creme);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px}
+  h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(40px,9vw,76px);line-height:.95;margin-top:10px}
+  h1 span{color:var(--rosa)}
+  .sub{max-width:640px;margin-top:12px;font-size:16px;opacity:.9}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .meta span{border:2px solid var(--creme);padding:4px 10px;font-weight:700;font-size:13px}
+
+  /* regras */
+  .regras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:28px 0}
+  @media (max-width:720px){.regras{grid-template-columns:minmax(0,1fr)}}
+  .regra{border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);background:var(--branco);padding:20px}
+  .regra h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:28px;line-height:1;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .regra--ig h2 i{background:var(--rosa)}
+  .regra--x h2 i{background:var(--azul)}
+  .regra h2 i{display:inline-block;width:14px;height:14px;border:2px solid var(--preto)}
+  .regra ul{list-style:none;display:grid;gap:8px}
+  .regra li{padding-left:20px;position:relative}
+  .regra li::before{content:"→";position:absolute;left:0;font-weight:800}
+
+  /* filtros */
+  .barra{position:sticky;top:0;z-index:5;background:var(--creme);border-bottom:3px solid var(--preto);padding:12px 0}
+  .barra .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .barra small{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin-right:4px}
+  .chip{font:800 13px var(--texto);border:2px solid var(--preto);background:var(--branco);color:var(--preto);padding:7px 12px;cursor:pointer;box-shadow:2px 2px 0 var(--preto)}
+  .chip[aria-pressed="true"]{background:var(--preto);color:var(--creme)}
+  .chip--ig[aria-pressed="true"]{background:var(--rosa);color:var(--creme)}
+  .chip--x[aria-pressed="true"]{background:var(--azul);color:var(--creme)}
+  .sep{width:2px;height:24px;background:var(--preto);margin:0 4px}
+
+  /* semanas */
+  .semana{margin:34px 0}
+  .semana-topo{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;border-bottom:3px solid var(--preto);padding-bottom:10px;margin-bottom:16px}
+  .semana-topo h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(30px,6vw,44px);line-height:1}
+  .semana-topo h2 em{font-style:normal;color:var(--rosa)}
+  .semana-topo .datas{font-weight:800}
+  .semana-topo p{flex-basis:100%;font-size:15px}
+
+  .dias{display:grid;gap:14px}
+  .dia{display:grid;grid-template-columns:86px minmax(0,1fr);border:3px solid var(--preto);background:var(--branco)}
+  @media (max-width:640px){.dia{grid-template-columns:minmax(0,1fr)}}
+  .data{background:var(--preto);color:var(--creme);padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  @media (max-width:640px){.data{flex-direction:row;justify-content:flex-start;gap:10px;padding:8px 12px}}
+  .data b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1}
+  .data span{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+  .data .hoje{background:var(--rosa);padding:2px 6px;margin-top:4px}
+  @media (max-width:640px){.data .hoje{margin-top:0}}
+  .dia.destaque .data{background:var(--rosa)}
+  .redes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (max-width:820px){.redes{grid-template-columns:minmax(0,1fr)}}
+  .rede{padding:14px 16px;border-left:3px solid var(--preto)}
+  @media (max-width:820px){.rede{border-left:0;border-top:3px solid var(--preto)}.rede:first-child{border-top:0}}
+  @media (max-width:640px){.rede:first-child{border-top:3px solid var(--preto)}}
+  .rede h3{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .rede h3 i{display:inline-block;width:12px;height:12px;border:2px solid var(--preto)}
+  .rede--ig h3 i{background:var(--rosa)}
+  .rede--x h3 i{background:var(--azul)}
+  .post{margin-bottom:10px}
+  .post:last-child{margin-bottom:0}
+  .post .fmt{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border:2px solid var(--preto);padding:1px 6px;margin-right:6px}
+  .rede--ig .fmt{background:#FFE3F2}
+  .rede--x .fmt{background:#E3E8FF}
+  .post .hora{font-size:12px;font-weight:700;opacity:.7}
+  .post p{margin-top:4px}
+  .post q{display:block;margin-top:4px;font-style:italic;quotes:"“" "”";border-left:3px solid var(--rosa);padding-left:8px}
+  .rede--x .post q{border-left-color:var(--azul)}
+
+  body.so-ig .rede--x, body.so-x .rede--ig{display:none}
+  body.so-ig .redes, body.so-x .redes{grid-template-columns:minmax(0,1fr)}
+  body.so-ig .rede, body.so-x .rede{border-left:0}
+  @media (max-width:640px){body.so-ig .rede, body.so-x .rede{border-top:3px solid var(--preto)}}
+
+  /* gravar */
+  .gravar{border:3px solid var(--preto);box-shadow:6px 6px 0 var(--preto);background:var(--azul);color:var(--creme);padding:22px;margin:40px 0}
+  .gravar h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:32px;line-height:1;margin-bottom:12px}
+  .gravar ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;list-style:none}
+  @media (max-width:640px){.gravar ul{grid-template-columns:minmax(0,1fr)}}
+  .gravar li{padding-left:22px;position:relative}
+  .gravar li::before{content:"□";position:absolute;left:0;font-weight:800}
+
+  footer{background:var(--preto);color:var(--creme);text-align:center;padding:22px 16px;font-size:13px;margin-top:40px}
+  footer b{color:var(--rosa)}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <div class="marca">girl<b>.</b> agência</div>
+    <span class="tag">Roteiro interno · não divulgar</span>
+    <h1>Roteiro <span>JV</span></h1>
+    <p class="sub">Calendário de Instagram e X (Twitter) dia a dia, de hoje até o fim do contrato. O Instagram vende o homem; o X entrega as prévias e leva pro Privacy.</p>
+    <div class="meta">
+      <span>08/11 → 05/12</span>
+      <span>4 semanas · 28 dias</span>
+      <span>IG 12h e 19h</span>
+      <span>X 22h às 1h</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="regras">
+    <div class="regra regra--ig">
+      <h2><i></i>Regras do Instagram</h2>
+      <ul>
+        <li>Nada explícito. O feed é corpo, rotina, treino, estilo e personalidade.</li>
+        <li>Link do Privacy nunca na bio principal: fica no destaque "link" ou no perfil reserva.</li>
+        <li>Collab com criadora sempre marcada no reel, pra puxar a audiência dela.</li>
+        <li>Stories todo dia, mesmo nos dias sem post no feed (caixinha, enquete, bastidor).</li>
+      </ul>
+    </div>
+    <div class="regra regra--x">
+      <h2><i></i>Regras do X</h2>
+      <ul>
+        <li>Toda mídia +18 marcada como sensível nas configurações da conta.</li>
+        <li>Link do Privacy no post fixado e na bio.</li>
+        <li>Postar no horário de pico: 22h à 1h. Fim de semana, até 2h.</li>
+        <li>Prévia é sempre teaser: mostra o começo, a versão completa fica no Privacy.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<nav class="barra" aria-label="Filtros">
+  <div class="wrap">
+    <small>Rede</small>
+    <button class="chip" data-rede="todas" aria-pressed="true">Ambas</button>
+    <button class="chip chip--ig" data-rede="ig" aria-pressed="false">Instagram</button>
+    <button class="chip chip--x" data-rede="x" aria-pressed="false">X</button>
+    <span class="sep"></span>
+    <small>Semana</small>
+    <button class="chip" data-semana="0" aria-pressed="true">Todas</button>
+    <button class="chip" data-semana="1" aria-pressed="false">1</button>
+    <button class="chip" data-semana="2" aria-pressed="false">2</button>
+    <button class="chip" data-semana="3" aria-pressed="false">3</button>
+    <button class="chip" data-semana="4" aria-pressed="false">4</button>
+  </div>
+</nav>
+
+<main class="wrap" id="calendario"></main>
+
+<main class="wrap">
+  <section class="gravar">
+    <h2>O que o JV precisa gravar</h2>
+    <ul>
+      <li>Treinos (peito, costas, perna) com celular no tripé, 3 ângulos</li>
+      <li>Espelho de academia e de casa, com e sem camisa</li>
+      <li>Rotina: café, carro, rua, look de noite</li>
+      <li>Pós-banho de toalha (sem nada explícito pro IG)</li>
+      <li>3 trends de áudio por semana (salvar os áudios em alta)</li>
+      <li>Prévias de 10 a 15s pro X, cortadas antes da parte paga</li>
+      <li>Collabs da semana 3 e 4 combinadas com antecedência, com criadoras 18+ que topam ser marcadas</li>
+      <li>Bastidores das gravações em collab (sem nada explícito)</li>
+    </ul>
+  </section>
+</main>
+
+<footer>Roteiro interno da <b>Girl Agência</b>. Página fora do site: só acessa quem tem o link.</footer>
+
+<script>
+const semanas = [
+  {n:1, titulo:"Apresentação", datas:"08/11 a 14/11", foco:"Quem é o JV: corpo, rotina e personalidade. O objetivo é a pessoa decorar o rosto e o jeito dele antes de qualquer venda."},
+  {n:2, titulo:"Rotina e desejo", datas:"15/11 a 21/11", foco:"POV de namorado e bastidores. No X, as prévias ficam mais quentes e começa a chamada pro chat."},
+  {n:3, titulo:"Casal + Black Friday", datas:"22/11 a 28/11", foco:"Entra a primeira collab com criadora. Sexta (27/11) é Black Friday: assinatura com desconto por 24h."},
+  {n:4, titulo:"Conversão", datas:"29/11 a 05/12", foco:"Aproveita quem chegou na Black Friday, segunda collab e fechamento do mês pedindo o que querem ver depois."}
+];
+
+// dias: [data, diaSemana, semana, ig:[[fmt,hora,ideia,legenda]], x:[[fmt,hora,ideia,texto]], destaque?]
+const dias = [
+  ["08","dom",1,
+    [["Reel","19h","POV: o cara da academia que você finge que não está olhando. Olhar de canto pra câmera no meio da série.","finge que não viu 👀"],
+     ["Stories","12h","Caixinha de perguntas: \"me pergunta qualquer coisa\". Responder as melhores durante a semana.",""]],
+    [["Fixado","22h","Post de apresentação, fixado no topo do perfil, com uma foto de espelho.","prazer, JV. aqui eu posto o que o insta não deixa 🔞 link aqui embaixo"],
+     ["Foto","0h","Espelho sem camisa, marcado como sensível.","boa noite pra quem ainda tá acordado"]]],
+  ["09","seg",1,
+    [["Carrossel","12h","\"5 coisas sobre mim\": idade (18+), signo, treino, comida favorita, o que procura numa pessoa.","agora você me conhece um pouco mais. pergunta o resto 👇"]],
+    [["Enquete","22h","Enquete de engajamento.","vocês preferem foto de: academia 🏋️ ou de cama 🛏️?"],
+     ["Foto","23h30","Foto no fim do treino, suado.","treino de hoje pago ✅"]]],
+  ["10","ter",1,
+    [["Reel","19h","Treino de peito ou costas com áudio em alta. Cortes rápidos, terminando de frente pra câmera.","segunda série sempre é a pior"]],
+    [["Texto + foto","22h","Frase de gancho com foto do vestiário.","treino pesado hoje. quem vai me ajudar a relaxar depois?"],
+     ["Vídeo","0h","Prévia de 10s (sensível), cortada antes da parte paga.","o resto tá no link fixado"]]],
+  ["11","qua",1,
+    [["Foto","12h","Lifestyle: carro, rua ou look de sair.","quarta com cara de sexta"],
+     ["Stories","19h","Enquete: \"academia de manhã ou de noite?\" e respostas da caixinha.",""]],
+    [["Thread","22h","Thread curta (3 posts) contando como começou a criar conteúdo. Humaniza o perfil.","como eu comecei aqui (fio) 🧵"],
+     ["Foto","0h30","Foto deitado, luz baixa, sensível.","insônia de novo"]]],
+  ["12","qui",1,
+    [["Reel","19h","Trend \"red flags que eu tenho\" com humor.","a última é verdade 🚩"]],
+    [["Vídeo","22h","Prévia de 15s censurada + link.","só 15 segundos. a versão completa você já sabe onde tá"],
+     ["Texto","1h","Post de conversa, puxando resposta.","me conta o que você faria se eu aparecesse aí agora"]]],
+  ["13","sex",1,
+    [["Reel","19h","Pós-banho de toalha no espelho, sem nada explícito.","sextou cheiroso"]],
+    [["Texto","22h","Chamada pro chat.","sextou. tô online no privacy agora, me chama que eu respondo 😈"],
+     ["Foto","0h","Foto da toalha, sensível.","a toalha quase caiu"]]],
+  ["14","sáb",1,
+    [["Stories","19h","Bastidores do sábado (rolê, comida, treino) + respostas da caixinha.",""]],
+    [["Enquete","22h","Pergunta o que querem ver.","semana que vem vocês querem: mais treino, mais cama ou uma surpresa? 👀"],
+     ["Foto","1h","Foto noturna.","sábado sem sono"]]],
+
+  ["15","dom",2,
+    [["Reel","19h","POV \"domingo comigo\": café, treino leve, sofá.","domingo perfeito ou não?"]],
+    [["Foto","22h","Foto acordando, na cama, sensível.","bom dia (às 22h)"],
+     ["Texto","0h","Post de conversa.","domingo é o dia que eu mais fico carente. alguém?"]]],
+  ["16","seg",2,
+    [["Carrossel","12h","\"Como eu seria como namorado\": memes e fotos do dia a dia.","você aguentaria? 😅"]],
+    [["Enquete","22h","Enquete.","namorado ciumento ou que deixa livre?"],
+     ["Vídeo","23h30","Prévia de 10s, sensível.","segunda-feira merece"]]],
+  ["17","ter",2,
+    [["Reel","19h","Treino de perna com humor (\"dia de perna é sofrimento\").","quem pula o dia de perna não é de confiança"]],
+    [["Vídeo","22h","Prévia no chuveiro ou vestiário, sensível.","depois do treino de perna só um banho resolve"],
+     ["Texto","0h30","Gancho pro chat.","quem me mandar mensagem agora ganha uma coisa que eu não posto aqui"]]],
+  ["18","qua",2,
+    [["Foto","12h","Look de noite, saindo.","jantar ou ficar em casa?"],
+     ["Stories","19h","Caixinha: \"o que vocês querem que eu grave?\"",""]],
+    [["Texto","22h","Anuncia a chamada de vídeo no Privacy.","abri horário pra chamada de vídeo essa semana. quem quer? link fixado"],
+     ["Foto","0h","Foto com camisa aberta, sensível.","de saída ou de volta? 😏"]]],
+  ["19","qui",2,
+    [["Reel","19h","Trend de áudio sensual: olhar, mordida no lábio, sem nudez.","esse áudio me pegou"]],
+    [["Vídeo","22h","Prévia de 15s, a mais quente da semana até aqui, sensível.","quinta-feira com isso? vocês não estão prontos"],
+     ["Texto","1h","Post de conversa.","responde com um emoji o que você achou do vídeo"]]],
+  ["20","sex",2,
+    [["Reel","19h","Reel de teaser: \"semana que vem eu não vou estar sozinho\" (só a mão de alguém no ombro dele).","semana que vem tem novidade 👀"]],
+    [["Texto","22h","Aquecimento da collab.","semana que vem vem uma surpresa aqui. alguém imagina o que é?"],
+     ["Foto","0h","Foto de sexta à noite, sensível.","sextou de novo"]]],
+  ["21","sáb",2,
+    [["Stories","19h","Rolê de sábado + enquete \"querem ver eu com alguém?\".",""]],
+    [["Texto","23h","Madrugada no chat.","acordado ainda? tô respondendo o chat agora"],
+     ["Foto","1h30","Foto noturna, sensível.","sábado de madrugada é perigoso"]]],
+
+  ["22","dom",3,
+    [["Reel","19h","Teaser da collab: mão feminina, risada fora da câmera, sem mostrar o rosto dela.","amanhã 👀"]],
+    [["Foto","22h","Teaser de casal sem mostrar o rosto dela, sensível.","amanhã eu mostro quem é"]]],
+  ["23","seg",3,
+    [["Reel","19h","Collab com a criadora parceira, marcada no reel. Trend de casal (dança, desafio ou POV).","olha quem eu trouxe 😈 @parceira"]],
+    [["Foto","22h","Foto com ela, marcando o X dela.","a surpresa chegou. vocês pediram"],
+     ["Vídeo","0h","Prévia de casal de 10s, sensível.","o que aconteceu depois tá no link"]]],
+  ["24","ter",3,
+    [["Carrossel","12h","Bastidores da gravação da collab (risadas, erros, making of), sem nada explícito.","os bastidores foram melhores que o vídeo 😂"]],
+    [["Vídeo","22h","Prévia de casal mais longa (15s), sensível.","a versão completa tem 10 minutos"],
+     ["Texto","0h30","Gancho pro chat.","quem quer saber como foi, me chama no chat"]]],
+  ["25","qua",3,
+    [["Reel","19h","Trend \"tipos de casal\" com humor (pode ser com a parceira).","qual a gente é?"]],
+    [["Enquete","22h","Enquete.","querem mais collab ou mais solo?"],
+     ["Foto","0h","Foto solo, sensível.","quarta solo"]]],
+  ["26","qui",3,
+    [["Stories","12h","Contagem: \"amanhã tem Black Friday no link do destaque\".",""],
+     ["Reel","19h","Reel de treino com texto na tela: \"amanhã tem promo\".","amanhã 🖤"]],
+    [["Texto","22h","Aviso da Black Friday.","amanhã: assinatura com desconto por 24h. só amanhã"],
+     ["Vídeo","0h","Prévia do que vem no Privacy, sensível.","isso aqui por metade do preço amanhã"]]],
+  ["27","sex",3,
+    [["Reel","12h","Reel de Black Friday: \"só hoje\".","black friday: link no destaque, só hoje 🖤"],
+     ["Stories","19h","3 stories ao longo do dia lembrando a promo, com contagem regressiva.",""]],
+    [["Fixado","9h","Troca o post fixado pela promo.","BLACK FRIDAY 🖤 assinatura com desconto só hoje. link aqui"],
+     ["Vídeo","18h","Prévia de casal, sensível.","quem assinar hoje vê a collab completa"],
+     ["Texto","23h","Últimas horas.","faltam poucas horas. depois volta o preço normal"]], true],
+  ["28","sáb",3,
+    [["Stories","19h","Agradecimento a quem assinou + caixinha \"o que vocês querem agora?\".",""]],
+    [["Texto","22h","Boas-vindas a quem chegou.","bem-vindos os novos 🖤 me chama no chat que eu respondo todo mundo"],
+     ["Foto","1h","Foto noturna, sensível.","sábado comemorando"]]],
+
+  ["29","dom",4,
+    [["Reel","19h","\"O que vocês perderam essa semana\": cortes leves da semana, sem nada explícito.","semana intensa"]],
+    [["Thread","22h","Thread com as prévias da semana (censuradas).","resumo da semana pra quem chegou agora 🧵"]]],
+  ["30","seg",4,
+    [["Carrossel","12h","\"Respondendo vocês\": prints da caixinha com respostas.","vocês perguntaram, eu respondi"]],
+    [["Enquete","22h","Escolha da próxima collab.","próxima collab: loira ou morena?"],
+     ["Vídeo","0h","Prévia solo, sensível.","segunda começando bem"]]],
+  ["01","ter",4,
+    [["Reel","19h","Treino com texto \"meta de dezembro\".","dezembro é pra fechar o ano bem"]],
+    [["Texto","22h","Virada do mês.","dezembro chegou: conteúdo novo todo dia no privacy"],
+     ["Foto","0h30","Foto sensível.","primeiro do mês"]]],
+  ["02","qua",4,
+    [["Foto","12h","Lifestyle (rua, carro, look).","quarta"],
+     ["Stories","19h","Enquete e bastidor da gravação da segunda collab.",""]],
+    [["Vídeo","22h","Prévia solo de 15s, sensível.","quarta pede isso"],
+     ["Texto","0h","Teaser.","amanhã tem collab nova 👀"]]],
+  ["03","qui",4,
+    [["Reel","19h","Segunda collab marcada (outra criadora ou a mesma).","segunda rodada 😈 @parceira"]],
+    [["Foto","22h","Foto com a parceira, marcando o X dela.","vocês escolheram, eu trouxe"],
+     ["Vídeo","0h","Prévia de casal, sensível.","completo no link"]]],
+  ["04","sex",4,
+    [["Reel","19h","Sexta à noite, se arrumando pra sair.","sextou pela última vez no mês"]],
+    [["Texto","22h","Chamada pro chat e pra chamada de vídeo.","sexta online: tem horário de chamada aberto hoje"],
+     ["Foto","0h","Foto sensível.","de saída"]]],
+  ["05","sáb",4,
+    [["Stories","19h","\"Fim do mês: obrigado\" + caixinha \"o que vocês querem em dezembro?\".",""]],
+    [["Thread","22h","Retrospectiva do mês com as melhores prévias.","um mês aqui. obrigado por tudo 🖤 (fio)"],
+     ["Enquete","1h","Enquete pro próximo mês.","dezembro: mais collab, mais solo ou mais chamada?"]]]
+];
+
+const hoje = new Date();
+const chaveHoje = String(hoje.getDate()).padStart(2,"0") + "/" + String(hoje.getMonth()+1).padStart(2,"0");
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));}
+function posts(lista){
+  return lista.map(([fmt,hora,ideia,txt])=>
+    `<div class="post"><span class="fmt">${esc(fmt)}</span><span class="hora">${esc(hora)}</span><p>${esc(ideia)}</p>${txt?`<q>${esc(txt)}</q>`:""}</div>`
+  ).join("");
+}
+
+const cal = document.getElementById("calendario");
+semanas.forEach(s=>{
+  const sec = document.createElement("section");
+  sec.className = "semana"; sec.dataset.semana = s.n;
+  const doMes = dias.filter(d=>d[2]===s.n);
+  sec.innerHTML = `
+    <div class="semana-topo">
+      <h2>Semana ${s.n}: <em>${esc(s.titulo)}</em></h2>
+      <span class="datas">${esc(s.datas)}</span>
+      <p>${esc(s.foco)}</p>
+    </div>
+    <div class="dias">${doMes.map(([d,dow,_,ig,x,dest])=>{
+      const mes = (s.n===4 && Number(d)<=5) ? "12" : "11";
+      const ehHoje = `${d}/${mes}` === chaveHoje;
+      return `<article class="dia${dest?" destaque":""}">
+        <div class="data"><b>${d}/${mes}</b><span>${dow}</span>${ehHoje?'<span class="hoje">hoje</span>':""}</div>
+        <div class="redes">
+          <div class="rede rede--ig"><h3><i></i>Instagram</h3>${posts(ig)}</div>
+          <div class="rede rede--x"><h3><i></i>X (Twitter)</h3>${posts(x)}</div>
+        </div>
+      </article>`;
+    }).join("")}</div>`;
+  cal.appendChild(sec);
+});
+
+document.querySelectorAll("[data-rede]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-rede]").forEach(o=>o.setAttribute("aria-pressed", o===b));
+  document.body.classList.toggle("so-ig", b.dataset.rede==="ig");
+  document.body.classList.toggle("so-x", b.dataset.rede==="x");
+});
+document.querySelectorAll("[data-semana]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("[data-semana]").forEach(o=>o.setAttribute("aria-pressed", o===b));
+  const n = b.dataset.semana;
+  document.querySelectorAll(".semana").forEach(s=>s.hidden = n!=="0" && s.dataset.semana!==n);
+});
+</script>
+</body>
+</html>
