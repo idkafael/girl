@@ -142,6 +142,22 @@
   .alerta b{font-weight:800}
   .total{margin-top:14px;font-weight:800}
 
+  /* marcações de entrega */
+  .marcas{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+  .entrega{min-width:40px;height:36px;padding:0 10px;font:800 14px var(--texto);border:2px solid var(--preto);background:var(--branco);color:var(--preto);cursor:pointer;box-shadow:2px 2px 0 var(--preto)}
+  .entrega:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--preto)}
+  .entrega[aria-pressed="true"]{background:#16A34A;color:var(--branco);border-color:#0B5D29}
+  .entrega[aria-pressed="true"]::before{content:"✓ "}
+  .entrega:disabled{opacity:.5;cursor:wait}
+  .marcas--fixado .entrega{min-width:150px}
+  .tipo.completo{border-color:#16A34A;box-shadow:4px 4px 0 #16A34A}
+  .tipo .feitos{font-size:12px;font-weight:800;color:#16A34A;margin-left:6px}
+  .progresso{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .progresso-barra{flex:1;min-width:160px;height:16px;border:2px solid var(--preto);background:var(--branco)}
+  .progresso-barra span{display:block;height:100%;width:0;background:#16A34A;transition:width .3s}
+  .progresso b{font-weight:800;font-size:14px}
+  .dica-marcas{font-size:13px;margin-top:6px;opacity:.8}
+
   footer{background:var(--preto);color:var(--creme);text-align:center;padding:22px 16px;font-size:13px;margin-top:40px}
   footer b{color:var(--rosa)}
 </style>
@@ -168,10 +184,13 @@
       <span class="tag">Etapa 1 · X (Twitter)</span>
       <h2>Coleta de mídias</h2>
       <p>Meta: <b>1 post por dia no X durante os 28 dias</b>. Grave tudo antes e mande pra agência: a gente organiza, censura o que precisar e agenda. As referências abrem no X.</p>
+      <div class="progresso"><div class="progresso-barra"><span id="progresso-fill"></span></div><b id="progresso-txt">Carregando entregas…</b></div>
+      <p class="dica-marcas">Toque no número de cada mídia quando ela for entregue. A marcação fica salva e aparece igual pra você e pra agência.</p>
     </div>
 
     <div class="fixado">
       <h3>★ Post fixado: chamada de vídeo</h3>
+      <div class="marcas marcas--fixado" data-grupo="fixado" data-qtd="1"></div>
       <p>Vídeo curto, de frente pra câmera, lendo em voz alta a pergunta de um seguidor ("você faz chamada?") e respondendo:</p>
       <q>Faço sim. Eu tava agora respondendo algumas pessoas aqui na laranjinha, então se você quiser ter seu carioca ao vivo, me chama por lá.</q>
       <p>Essencial: <b>ler a pergunta da caixinha em voz alta</b> e responder seguindo a estrutura acima, mas do seu jeito e no seu tom. Fica fixado no topo do perfil o mês inteiro.</p>
@@ -181,6 +200,7 @@
     <div class="tipos">
       <div class="tipo">
         <div class="tipo-topo"><h3>Vídeos de provocação de cueca</h3><span class="qtd">6 vídeos</span></div>
+        <div class="marcas" data-grupo="cueca" data-qtd="6"></div>
         <ul>
           <li>Mão por cima da cueca, volume marcando, sem tirar a cueca</li>
           <li>10 a 20 segundos, celular parado ou na mão</li>
@@ -193,6 +213,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Fotos de toalha no espelho</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="toalha" data-qtd="5"></div>
         <ul>
           <li>De preferência molhado, saindo do banho</li>
           <li>Abdômen marcado e volume aparecendo na toalha</li>
@@ -202,6 +223,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Fotos de cueca na cadeira</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="cadeira" data-qtd="5"></div>
         <ul>
           <li>Sentado numa cadeira de frente pro espelho, de cueca</li>
           <li>Ângulos variados: de frente, de lado, de cima</li>
@@ -210,6 +232,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Fotos de nudez explícita</h3><span class="qtd">4 fotos</span></div>
+        <div class="marcas" data-grupo="nudez" data-qtd="4"></div>
         <ul>
           <li>A agência censura antes de postar no X</li>
           <li>A versão sem censura vai pro Privacy</li>
@@ -218,6 +241,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Vídeos de "descuido"</h3><span class="qtd">4 vídeos</span></div>
+        <div class="marcas" data-grupo="descuido" data-qtd="4"></div>
         <ul>
           <li>Ele fazendo algo da rotina (cozinha, micro-ondas, espelho) e a nudez aparece de relance no reflexo</li>
           <li>Com a câmera frontal, mostra no máximo 1 segundo</li>
@@ -227,6 +251,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Exibicionismo encenado</h3><span class="qtd">2 vídeos</span></div>
+        <div class="marcas" data-grupo="exib" data-qtd="2"></div>
         <ul>
           <li>Lugar que <b>parece</b> público mas é privado: varanda fechada, quintal, garagem própria, carro parado em local privado</li>
         </ul>
@@ -234,6 +259,7 @@
 
       <div class="tipo">
         <div class="tipo-topo"><h3>Vídeos de casal com ele em destaque</h3><span class="qtd">2 vídeos</span></div>
+        <div class="marcas" data-grupo="casal" data-qtd="2"></div>
         <ul>
           <li>O foco é ele o tempo todo: enquadramento no corpo dele, não na parceira</li>
           <li>Nada de cena em que ela vira o centro do vídeo</li>
@@ -500,6 +526,71 @@ semanas.forEach(s=>{
     }).join("")}</div>`;
   cal.appendChild(sec);
 });
+
+// ---- marcações de entrega (salvas no banco, iguais pra todos) ----
+const ROTEIRO = "jv";
+let entregas = {};
+let bancoOk = true;
+function fmtData(iso){ try{ const d=new Date(iso); return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})+" "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}); }catch(e){ return ""; } }
+function montarMarcas(){
+  document.querySelectorAll(".marcas").forEach(box=>{
+    const g = box.dataset.grupo, n = Number(box.dataset.qtd);
+    box.innerHTML = "";
+    for(let i=1;i<=n;i++){
+      const id = `${g}-${i}`;
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "entrega"; b.dataset.id = id;
+      b.textContent = g==="fixado" ? "Entregue" : String(i);
+      b.onclick = ()=>alternar(id, b);
+      box.appendChild(b);
+    }
+  });
+}
+function pintar(){
+  let total=0, feitos=0;
+  document.querySelectorAll(".entrega").forEach(b=>{
+    total++;
+    const quando = entregas[b.dataset.id];
+    b.setAttribute("aria-pressed", quando ? "true" : "false");
+    b.title = quando ? "Entregue em " + fmtData(quando) : "Marcar como entregue";
+    b.disabled = !bancoOk;
+    if(quando) feitos++;
+  });
+  document.querySelectorAll(".tipo").forEach(t=>{
+    const bs = t.querySelectorAll(".entrega"); if(!bs.length) return;
+    const f = [...bs].filter(b=>b.getAttribute("aria-pressed")==="true").length;
+    t.classList.toggle("completo", f===bs.length);
+    let tag = t.querySelector(".feitos");
+    if(!tag){ tag=document.createElement("span"); tag.className="feitos"; t.querySelector(".tipo-topo h3").appendChild(tag); }
+    tag.textContent = f ? `${f}/${bs.length} entregues` : "";
+  });
+  const pct = total ? Math.round(feitos/total*100) : 0;
+  document.getElementById("progresso-fill").style.width = pct + "%";
+  document.getElementById("progresso-txt").textContent = bancoOk
+    ? `${feitos} de ${total} mídias entregues (${pct}%)`
+    : "Marcações ainda não ativadas: falta conectar o banco na Vercel.";
+}
+async function carregar(){
+  try{
+    const r = await fetch(`/api/entregas?roteiro=${ROTEIRO}`, {cache:"no-store"});
+    const j = await r.json();
+    bancoOk = !!j.ok; if(j.ok) entregas = j.itens || {};
+  }catch(e){ bancoOk = false; }
+  pintar();
+}
+async function alternar(id, botao){
+  const feito = !entregas[id];
+  botao.disabled = true;
+  try{
+    const r = await fetch("/api/entregas", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({roteiro:ROTEIRO, id, feito})});
+    const j = await r.json();
+    if(j.ok) entregas = j.itens || {};
+  }catch(e){}
+  pintar();
+}
+montarMarcas(); pintar(); carregar();
+setInterval(carregar, 20000);
+document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) carregar(); });
 
 function mostrar(v){
   document.body.classList.toggle("so-x", v==="x");
