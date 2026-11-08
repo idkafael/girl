@@ -31,6 +31,18 @@
   .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
   .meta span{border:2px solid var(--creme);padding:4px 10px;font-weight:700;font-size:13px}
 
+  /* botões de calendário */
+  .botoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px;max-width:640px}
+  @media (max-width:480px){.botoes{grid-template-columns:minmax(0,1fr)}}
+  .btn{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,4vw,26px);letter-spacing:.02em;padding:14px 16px;border:3px solid var(--creme);color:var(--creme);background:transparent;box-shadow:5px 5px 0 var(--creme);transition:transform .1s}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--creme)}
+  .btn--x[aria-selected="true"]{background:var(--azul);border-color:var(--azul)}
+  .btn--ig[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa)}
+  .btn[aria-selected="false"]{opacity:.75}
+  .meta-linha{margin-top:14px;font-weight:700;font-size:13px;opacity:.8}
+  body.so-x [data-so="ig"], body.so-ig [data-so="x"]{display:none}
+  body.so-x .regras, body.so-ig .regras{grid-template-columns:minmax(0,1fr)}
+
   /* regras */
   .regras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:28px 0}
   @media (max-width:720px){.regras{grid-template-columns:minmax(0,1fr)}}
@@ -141,17 +153,16 @@
     <span class="tag">Roteiro interno · não divulgar</span>
     <h1>Roteiro <span>JV</span></h1>
     <p class="sub">Calendário de Instagram e X (Twitter) dia a dia, de hoje até o fim do contrato. O Instagram vende o homem; o X entrega as prévias e leva pro Privacy.</p>
-    <div class="meta">
-      <span>08/11 → 05/12</span>
-      <span>4 semanas · 28 dias</span>
-      <span>IG 12h e 19h</span>
-      <span>X: 1 post por dia, 22h a 0h</span>
+    <div class="botoes" role="tablist" aria-label="Calendários">
+      <a class="btn btn--x" href="#twitter" data-view="x" role="tab">Calendário Twitter</a>
+      <a class="btn btn--ig" href="#instagram" data-view="ig" role="tab">Calendário Instagram</a>
     </div>
+    <p class="meta-linha">08/11 → 05/12 · 4 semanas · 28 dias</p>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="coleta" id="coleta">
+  <section class="coleta" id="coleta" data-so="x">
     <div class="coleta-topo">
       <span class="tag">Etapa 1 · X (Twitter)</span>
       <h2>Coleta de mídias</h2>
@@ -242,7 +253,7 @@
   </section>
 
   <section class="regras">
-    <div class="regra regra--ig">
+    <div class="regra regra--ig" data-so="ig">
       <h2><i></i>Regras do Instagram</h2>
       <ul>
         <li>Nada explícito. O feed é corpo, rotina, treino, estilo e personalidade.</li>
@@ -251,7 +262,7 @@
         <li>Stories todo dia, mesmo nos dias sem post no feed (caixinha, enquete, bastidor).</li>
       </ul>
     </div>
-    <div class="regra regra--x">
+    <div class="regra regra--x" data-so="x">
       <h2><i></i>Regras do X</h2>
       <ul>
         <li>Toda mídia +18 marcada como sensível nas configurações da conta.</li>
@@ -265,11 +276,6 @@
 
 <nav class="barra" aria-label="Filtros">
   <div class="wrap">
-    <small>Rede</small>
-    <button class="chip" data-rede="todas" aria-pressed="true">Ambas</button>
-    <button class="chip chip--ig" data-rede="ig" aria-pressed="false">Instagram</button>
-    <button class="chip chip--x" data-rede="x" aria-pressed="false">X</button>
-    <span class="sep"></span>
     <small>Semana</small>
     <button class="chip" data-semana="0" aria-pressed="true">Todas</button>
     <button class="chip" data-semana="1" aria-pressed="false">1</button>
@@ -282,7 +288,7 @@
 <main class="wrap" id="calendario"></main>
 
 <main class="wrap">
-  <section class="gravar">
+  <section class="gravar" data-so="ig">
     <h2>O que o JV precisa gravar</h2>
     <ul>
       <li>Treinos (peito, costas, perna) com celular no tripé, 3 ângulos</li>
@@ -499,11 +505,14 @@ semanas.forEach(s=>{
   cal.appendChild(sec);
 });
 
-document.querySelectorAll("[data-rede]").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("[data-rede]").forEach(o=>o.setAttribute("aria-pressed", o===b));
-  document.body.classList.toggle("so-ig", b.dataset.rede==="ig");
-  document.body.classList.toggle("so-x", b.dataset.rede==="x");
-});
+function mostrar(v){
+  document.body.classList.toggle("so-x", v==="x");
+  document.body.classList.toggle("so-ig", v==="ig");
+  document.querySelectorAll(".btn[data-view]").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===v));
+}
+function pelaUrl(){ mostrar(location.hash==="#instagram" ? "ig" : "x"); }
+window.addEventListener("hashchange", pelaUrl);
+pelaUrl();
 document.querySelectorAll("[data-semana]").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("[data-semana]").forEach(o=>o.setAttribute("aria-pressed", o===b));
   const n = b.dataset.semana;
