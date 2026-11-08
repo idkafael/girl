@@ -32,15 +32,18 @@
   .meta span{border:2px solid var(--creme);padding:4px 10px;font-weight:700;font-size:13px}
 
   /* botões de calendário */
-  .botoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px;max-width:640px}
+  .botoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px;max-width:900px}
+  @media (max-width:720px){.botoes{grid-template-columns:minmax(0,1fr)}}
   @media (max-width:480px){.botoes{grid-template-columns:minmax(0,1fr)}}
   .btn{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,4vw,26px);letter-spacing:.02em;padding:14px 16px;border:3px solid var(--creme);color:var(--creme);background:transparent;box-shadow:5px 5px 0 var(--creme);transition:transform .1s}
   .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--creme)}
   .btn--x[aria-selected="true"]{background:var(--azul);border-color:var(--azul)}
   .btn--ig[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa)}
+  .btn--pv[aria-selected="true"]{background:var(--creme);color:var(--preto)}
   .btn[aria-selected="false"]{opacity:.75}
   .meta-linha{margin-top:14px;font-weight:700;font-size:13px;opacity:.8}
-  body.so-x [data-so="ig"], body.so-ig [data-so="x"]{display:none}
+  body.so-x [data-so]:not([data-so="x"]), body.so-ig [data-so]:not([data-so="ig"]), body.so-pv [data-so]:not([data-so="pv"]){display:none}
+  body.so-pv .regras{display:none}
   .barra, #calendario{display:none}
   body.so-x .regras, body.so-ig .regras{grid-template-columns:minmax(0,1fr)}
 
@@ -174,6 +177,7 @@
     <div class="botoes" role="tablist" aria-label="Calendários">
       <a class="btn btn--x" href="#twitter" data-view="x" role="tab">Calendário Twitter</a>
       <a class="btn btn--ig" href="#instagram" data-view="ig" role="tab">Calendário Instagram</a>
+      <a class="btn btn--pv" href="#privacy" data-view="pv" role="tab">Feed Privacy</a>
     </div>
     <p class="meta-linha">08/11 → 05/12 · 4 semanas · 28 dias</p>
   </div>
@@ -274,6 +278,64 @@
 
     <p class="total">Total: 28 mídias (1 por dia) + o vídeo do post fixado.</p>
 
+  </section>
+
+  <section class="coleta coleta--pv" id="coleta-pv" data-so="pv">
+    <div class="coleta-topo">
+      <span class="tag" style="background:var(--preto)">Etapa 3 · Feed do Privacy</span>
+      <h2>Feed Privacy mensal</h2>
+      <p>O que entra no feed do Privacy no mês: o que é <b>free</b> mostra o que o assinante ganha, e o que é <b>pago</b> é vendido à parte. Grave e mande pra agência, que a gente organiza e posta.</p>
+      <div class="progresso"><div class="progresso-barra"><span></span></div><b>Carregando entregas…</b></div>
+      <p class="dica-marcas">Toque no número de cada mídia quando ela for entregue. A marcação fica salva e aparece igual pra você e pra agência.</p>
+    </div>
+
+    <div class="tipos">
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos de casal (pagos)</h3><span class="qtd">2 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-casal" data-qtd="2"></div>
+        <ul>
+          <li>8 minutos cada, cena completa de sexo explícito com a parceira</li>
+          <li>Ele em destaque o tempo todo, como nas referências do X</li>
+          <li>A parceira precisa estar autorizada/cadastrada no Privacy antes de postar</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Prévias dos vídeos de casal (free)</h3><span class="qtd">2 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-previa" data-qtd="2"></div>
+        <ul>
+          <li>No máximo 40 segundos, um de cada vídeo de casal</li>
+          <li>Corta antes da parte principal, pra puxar pro pago</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos solo</h3><span class="qtd">3 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-solo" data-qtd="3"></div>
+        <ul>
+          <li>5 minutos cada, cada um num lugar diferente</li>
+          <li>2 ficam free no feed e 1 é pago</li>
+          <li>Os números 1 e 2 são os free, o 3 é o pago</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos chamando pro chat</h3><span class="qtd">10 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-chat" data-qtd="10"></div>
+        <ul>
+          <li>30 segundos cada, se exibindo e chamando pro chat ou pra chamadinha</li>
+          <li>Fala direta pra câmera, como se fosse pra uma pessoa só</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos explícitas</h3><span class="qtd">10 fotos</span></div>
+        <div class="marcas" data-grupo="pv-fotos" data-qtd="10"></div>
+        <ul>
+          <li>Variar bastante: com roupa mostrando alguma coisa, sem roupa nenhuma, ângulos e lugares diferentes</li>
+          <li>Fazer com calma pra nenhuma ficar parecida com a outra</li>
+          <li>Não podem ser iguais às fotos usadas no chat</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="total">Total: 27 mídias no mês (3 vídeos pagos e 24 mídias no feed da assinatura).</p>
   </section>
 
   <section class="regras">
@@ -670,9 +732,10 @@ document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) carrega
 function mostrar(v){
   document.body.classList.toggle("so-x", v==="x");
   document.body.classList.toggle("so-ig", v==="ig");
+  document.body.classList.toggle("so-pv", v==="pv");
   document.querySelectorAll(".btn[data-view]").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===v));
 }
-function pelaUrl(){ mostrar(location.hash==="#instagram" ? "ig" : "x"); }
+function pelaUrl(){ const h=location.hash; mostrar(h==="#instagram" ? "ig" : h==="#privacy" ? "pv" : "x"); }
 window.addEventListener("hashchange", pelaUrl);
 pelaUrl();
 document.querySelectorAll("[data-semana]").forEach(b=>b.onclick=()=>{
