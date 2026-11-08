@@ -145,7 +145,7 @@
       <span>08/11 → 05/12</span>
       <span>4 semanas · 28 dias</span>
       <span>IG 12h e 19h</span>
-      <span>X 22h às 1h</span>
+      <span>X: 1 post por dia, 22h a 0h</span>
     </div>
   </div>
 </header>
@@ -430,6 +430,39 @@ const dias = [
     [["Thread","22h","Retrospectiva do mês com as melhores prévias.","um mês aqui. obrigado por tudo 🖤 (fio)"],
      ["Enquete","1h","Enquete pro próximo mês.","dezembro: mais collab, mais solo ou mais chamada?"]]]
 ];
+
+// X: 1 post por dia, usando as 28 mídias da coleta (etapa 1)
+const tiposX = {
+  T:["Foto · toalha","Foto de toalha no espelho, molhado, abdômen e volume marcando. Marcar como sensível."],
+  C:["Vídeo · cueca","Vídeo de provocação de cueca, mão por cima, sem tirar. Marcar como sensível."],
+  K:["Foto · cadeira","Foto de cueca sentado na cadeira, de frente pro espelho. Marcar como sensível."],
+  D:["Vídeo · descuido","Vídeo de rotina com a nudez aparecendo de relance no reflexo (no máximo 1s). Marcar como sensível."],
+  N:["Foto · nudez censurada","Foto de nudez explícita com censura aplicada pela agência. A versão sem censura fica no Privacy."],
+  E:["Vídeo · exibicionismo","Exibicionismo encenado em lugar privado que parece público. Marcar como sensível."],
+  S:["Vídeo · casal","Prévia de casal com ele em destaque, parceira marcada. Marcar como sensível."]
+};
+const xDia = {
+  "08":[["Fixado","21h","Vídeo de chamada de vídeo (ver post fixado na coleta). Fixar no topo do perfil.","faço sim. eu tava agora respondendo algumas pessoas aqui na laranjinha, então se você quiser ter seu carioca ao vivo, me chama por lá"],"T","saí do banho agora"],
+  "09":["C","tá marcando muito?"], "10":["K","sentado esperando você"], "11":["D","esquentando a comida e esqueci de um detalhe 😅"],
+  "12":["T","espelho embaçado, mas dá pra ver"], "13":["C","sextou e eu tô assim"], "14":["N","censurei aqui. sem censura no link fixado"],
+  "15":["K","domingo preguiçoso"], "16":["C","segunda-feira assim"], "17":["T","quem me secaria?"],
+  "18":["D","não percebi o espelho…"], "19":["K","cadeira nova, o que acharam?"], "20":["C","só por cima, por enquanto"],
+  "21":["E","quase que alguém viu"], "22":["T","toalha ou sem toalha?"],
+  "23":["S","trouxe companhia… mas o foco aqui é outro 😏 @parceira"], "24":["N","terça sem censura? só no link"],
+  "25":["C","adivinha o resto 👀 link fixado"], "26":["D","foi sem querer (ou não)"],
+  "27":["N","BLACK FRIDAY 🖤 sem censura só no privacy, com desconto só hoje"], "28":["K","sábado de frente pro espelho"],
+  "29":["T","banho tomado, só falta você"], "30":["C","segunda começando bem"], "01":["K","dezembro começou assim"],
+  "02":["D","ops"], "03":["S","segunda rodada. completo no link @parceira"], "04":["E","e se o vizinho tivesse olhado?"],
+  "05":["N","fim do mês sem censura no link"]
+};
+const horaX = {dom:"23h", seg:"22h", ter:"22h", qua:"22h", qui:"22h", sex:"23h", "sáb":"0h"};
+dias.forEach(d=>{
+  const v = xDia[d[0]];
+  const extra = Array.isArray(v[0]) ? [v.shift()] : [];
+  const [tipo, legenda] = v;
+  const [fmt, ideia] = tiposX[tipo];
+  d[4] = [...extra, [fmt, horaX[d[1]], ideia, legenda]];
+});
 
 const hoje = new Date();
 const chaveHoje = String(hoje.getDate()).padStart(2,"0") + "/" + String(hoje.getMonth()+1).padStart(2,"0");
