@@ -32,18 +32,20 @@
   .meta span{border:2px solid var(--creme);padding:4px 10px;font-weight:700;font-size:13px}
 
   /* botões de calendário */
-  .botoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px;max-width:900px}
-  @media (max-width:720px){.botoes{grid-template-columns:minmax(0,1fr)}}
+  .botoes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px;max-width:1068px}
+  @media (max-width:900px){.botoes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:440px){.botoes{grid-template-columns:minmax(0,1fr)}}
   @media (max-width:480px){.botoes{grid-template-columns:minmax(0,1fr)}}
   .btn{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,4vw,26px);letter-spacing:.02em;padding:14px 16px;border:3px solid var(--creme);color:var(--creme);background:transparent;box-shadow:5px 5px 0 var(--creme);transition:transform .1s}
   .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--creme)}
   .btn--x[aria-selected="true"]{background:var(--azul);border-color:var(--azul)}
   .btn--ig[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa)}
   .btn--pv[aria-selected="true"]{background:var(--creme);color:var(--preto)}
+  .btn--ch[aria-selected="true"]{background:#16A34A;border-color:#16A34A}
   .btn[aria-selected="false"]{opacity:.75}
   .meta-linha{margin-top:14px;font-weight:700;font-size:13px;opacity:.8}
-  body.so-x [data-so]:not([data-so="x"]), body.so-ig [data-so]:not([data-so="ig"]), body.so-pv [data-so]:not([data-so="pv"]){display:none}
-  body.so-pv .regras{display:none}
+  body.so-x [data-so]:not([data-so="x"]), body.so-ig [data-so]:not([data-so="ig"]), body.so-pv [data-so]:not([data-so="pv"]), body.so-ch [data-so]:not([data-so="ch"]){display:none}
+  body.so-pv .regras, body.so-ch .regras{display:none}
   .barra, #calendario{display:none}
   body.so-x .regras, body.so-ig .regras{grid-template-columns:minmax(0,1fr)}
 
@@ -162,6 +164,14 @@
   .progresso b{font-weight:800;font-size:14px}
   .dica-marcas{font-size:13px;margin-top:6px;opacity:.8}
 
+  .escada{width:100%;border-collapse:collapse;background:var(--branco);border:3px solid var(--preto);margin:6px 0 20px;font-size:14px}
+  .escada th,.escada td{border:2px solid var(--preto);padding:8px 10px;text-align:left;vertical-align:top}
+  .escada th{background:var(--preto);color:var(--creme);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  .escada td:first-child{font-family:var(--display);font-size:20px;text-align:center;width:44px}
+  .tabela-scroll{overflow-x:auto}
+  .sub-titulo{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:26px;line-height:1;margin:26px 0 10px}
+  .opcional{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;background:#FFF4C2;border:2px solid var(--preto);padding:1px 6px;margin-left:6px;vertical-align:middle}
+
   footer{background:var(--preto);color:var(--creme);text-align:center;padding:22px 16px;font-size:13px;margin-top:40px}
   footer b{color:var(--rosa)}
 </style>
@@ -178,6 +188,7 @@
       <a class="btn btn--x" href="#twitter" data-view="x" role="tab">Calendário Twitter</a>
       <a class="btn btn--ig" href="#instagram" data-view="ig" role="tab">Calendário Instagram</a>
       <a class="btn btn--pv" href="#privacy" data-view="pv" role="tab">Feed Privacy</a>
+      <a class="btn btn--ch" href="#chat" data-view="ch" role="tab">Chat Privacy</a>
     </div>
     <p class="meta-linha">08/11 → 05/12 · 4 semanas · 28 dias</p>
   </div>
@@ -338,6 +349,99 @@
     </div>
 
     <p class="total">Total: 27 mídias no mês (3 vídeos pagos e 24 mídias no feed da assinatura).</p>
+  </section>
+
+  <section class="coleta coleta--ch" id="coleta-ch" data-so="ch">
+    <div class="coleta-topo">
+      <span class="tag" style="background:#16A34A">Etapa 4 · Chat do Privacy</span>
+      <h2>💰 Chat do Privacy</h2>
+      <p>Duas coisas: os <b>convites pra chamada</b>, que viram disparos free pra movimentar o chat, e o <b>kit de sexting</b>, que o chatter vende em escadinha. Grave e mande pra agência.</p>
+      <div class="progresso"><div class="progresso-barra"><span></span></div><b>Carregando entregas…</b></div>
+      <p class="dica-marcas">Toque no número de cada mídia quando ela for entregue. A marcação fica salva e aparece igual pra você e pra agência.</p>
+    </div>
+
+    <h3 class="sub-titulo">Convites pra chamada · disparos free</h3>
+    <p>Saem como disparo free às <b>segundas, quartas e sextas</b>. Até 05/12 são 12 disparos: 09, 11, 13, 16, 18, 20, 23, 25, 27 e 30/11, e 02 e 04/12.</p>
+    <div class="tipos">
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos de convite pra chamada</h3><span class="qtd">12 vídeos</span></div>
+        <div class="marcas" data-grupo="ch-convite" data-qtd="12"></div>
+        <ul>
+          <li>Saindo do banho e fazendo o convite</li>
+          <li>Assistindo TV de cueca: vai tirando o edredom da frente, mostra que está de cueca e chama pra chamada</li>
+          <li>Sentado na cadeira de cueca, com o volume marcando</li>
+          <li>Acabou de chegar do treino, suado</li>
+          <li>Varia com a sua rotina: as cenas acima são exemplos, não precisa repetir</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-titulo">Kit de sexting · escadinha</h3>
+    <p>O chatter nunca solta o mais quente de cara: cada degrau sobe um pouco a intensidade e o preço (Guia 03, Chatter). As mídias abaixo estão na ordem em que entram na sessão.</p>
+    <div class="tabela-scroll"><table class="escada">
+      <thead><tr><th>#</th><th>Degrau</th><th>Mídia do kit</th><th>Preço</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Provocação leve</td><td>Banho 1 (rosto) e banho 2 (abdômen)</td><td>R$ 10–15</td></tr>
+        <tr><td>2</td><td>Sensual, insinuante</td><td>Banho 3 (bunda), banho 4 (corpo todo), vídeos se exibindo</td><td>R$ 15–25</td></tr>
+        <tr><td>3</td><td>Sem roupa, provocação</td><td>Banho 5 (de baixo pra cima) e fotos de nudez frontal</td><td>R$ 60–100</td></tr>
+        <tr><td>4</td><td>Vídeo curto</td><td>Vídeos de masturbação de 1 min</td><td>R$ 100–150</td></tr>
+        <tr><td>5</td><td>Clímax</td><td>Fotos pós-clímax · masturbação guiada sob pedido</td><td>R$ 200+</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tipos">
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos no banho</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="ch-banho" data-qtd="5"></div>
+        <ul>
+          <li>1: sem mostrar nada, só o rosto com expressão sexy</li>
+          <li>2: abdômen e barriga</li>
+          <li>3: bunda</li>
+          <li>4: corpo todo</li>
+          <li>5: de baixo pra cima, com nudez frontal</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos se exibindo</h3><span class="qtd">5 vídeos</span></div>
+        <div class="marcas" data-grupo="ch-exib" data-qtd="5"></div>
+        <ul>
+          <li>8 a 10 segundos, sozinho</li>
+          <li>Variar lugares da casa, ângulos e iluminação</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos de nudez frontal</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="ch-nudez" data-qtd="5"></div>
+        <ul>
+          <li>Variar ângulos, cenários e iluminação</li>
+          <li>Diferentes das fotos do feed</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeos de masturbação</h3><span class="qtd">2 vídeos</span></div>
+        <div class="marcas" data-grupo="ch-masturb" data-qtd="2"></div>
+        <ul>
+          <li>1 minuto cada, masturbação ativa</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos pós-clímax</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="ch-climax" data-qtd="5"></div>
+        <ul>
+          <li>Variar ângulos, cenários e iluminação</li>
+          <li>Fecham a sessão (topo da escadinha)</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Vídeo de masturbação guiada<span class="opcional">sob pedido</span></h3><span class="qtd">1 vídeo</span></div>
+        <div class="marcas" data-grupo="ch-guiada" data-qtd="1"></div>
+        <ul>
+          <li>2 a 3 minutos, falando com quem assiste</li>
+          <li>Ainda não é obrigatório, mas se pedirem a gente precisa ter</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="total">Total: 12 convites + 22 mídias de sexting (+1 vídeo sob pedido).</p>
   </section>
 
   <section class="regras">
@@ -735,9 +839,10 @@ function mostrar(v){
   document.body.classList.toggle("so-x", v==="x");
   document.body.classList.toggle("so-ig", v==="ig");
   document.body.classList.toggle("so-pv", v==="pv");
+  document.body.classList.toggle("so-ch", v==="ch");
   document.querySelectorAll(".btn[data-view]").forEach(b=>b.setAttribute("aria-selected", b.dataset.view===v));
 }
-function pelaUrl(){ const h=location.hash; mostrar(h==="#instagram" ? "ig" : h==="#privacy" ? "pv" : "x"); }
+function pelaUrl(){ const h=location.hash; mostrar(h==="#instagram" ? "ig" : h==="#privacy" ? "pv" : h==="#chat" ? "ch" : "x"); }
 window.addEventListener("hashchange", pelaUrl);
 pelaUrl();
 document.querySelectorAll("[data-semana]").forEach(b=>b.onclick=()=>{
