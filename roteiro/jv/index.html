@@ -41,6 +41,7 @@
   .btn[aria-selected="false"]{opacity:.75}
   .meta-linha{margin-top:14px;font-weight:700;font-size:13px;opacity:.8}
   body.so-x [data-so="ig"], body.so-ig [data-so="x"]{display:none}
+  .barra, #calendario{display:none}
   body.so-x .regras, body.so-ig .regras{grid-template-columns:minmax(0,1fr)}
 
   /* regras */
@@ -169,7 +170,7 @@
     <div class="marca">girl<b>.</b> agência</div>
     <span class="tag">Roteiro interno · não divulgar</span>
     <h1>Roteiro <span>JV</span></h1>
-    <p class="sub">Calendário de Instagram e X (Twitter) dia a dia, de hoje até o fim do contrato. O Instagram vende o homem; o X entrega as prévias e leva pro Privacy.</p>
+    <p class="sub">O que você precisa gravar e entregar até o fim do contrato, separado por rede. O Instagram vende o homem; o X entrega as prévias e leva pro Privacy.</p>
     <div class="botoes" role="tablist" aria-label="Calendários">
       <a class="btn btn--x" href="#twitter" data-view="x" role="tab">Calendário Twitter</a>
       <a class="btn btn--ig" href="#instagram" data-view="ig" role="tab">Calendário Instagram</a>
@@ -184,7 +185,7 @@
       <span class="tag">Etapa 1 · X (Twitter)</span>
       <h2>Coleta de mídias</h2>
       <p>Meta: <b>1 post por dia no X durante os 28 dias</b>. Grave tudo antes e mande pra agência: a gente organiza, censura o que precisar e agenda. As referências abrem no X.</p>
-      <div class="progresso"><div class="progresso-barra"><span id="progresso-fill"></span></div><b id="progresso-txt">Carregando entregas…</b></div>
+      <div class="progresso"><div class="progresso-barra"><span></span></div><b>Carregando entregas…</b></div>
       <p class="dica-marcas">Toque no número de cada mídia quando ela for entregue. A marcação fica salva e aparece igual pra você e pra agência.</p>
     </div>
 
@@ -310,18 +311,89 @@
 <main class="wrap" id="calendario"></main>
 
 <main class="wrap">
-  <section class="gravar" data-so="ig">
-    <h2>O que o JV precisa gravar</h2>
-    <ul>
-      <li>Treinos (peito, costas, perna) com celular no tripé, 3 ângulos</li>
-      <li>Espelho de academia e de casa, com e sem camisa</li>
-      <li>Rotina: café, carro, rua, look de noite</li>
-      <li>Pós-banho de toalha (sem nada explícito pro IG)</li>
-      <li>3 trends de áudio por semana (salvar os áudios em alta)</li>
-      <li>Prévias de 10 a 15s pro X, cortadas antes da parte paga</li>
-      <li>Collabs da semana 3 e 4 combinadas com antecedência, com criadoras 18+ que topam ser marcadas</li>
-      <li>Bastidores das gravações em collab (sem nada explícito)</li>
-    </ul>
+  <section class="coleta coleta--ig" id="coleta-ig" data-so="ig">
+    <div class="coleta-topo">
+      <span class="tag" style="background:var(--rosa)">Etapa 2 · Instagram</span>
+      <h2>Coleta de mídias</h2>
+      <p>Meta: <b>1 post por dia no feed + stories todo dia</b>, durante os 28 dias. No Instagram nada é explícito: o produto é ele (corpo, rotina, treino, estilo e personalidade). Grave e mande pra agência, que a gente edita e agenda.</p>
+      <div class="progresso"><div class="progresso-barra"><span></span></div><b>Carregando entregas…</b></div>
+      <p class="dica-marcas">Toque no número de cada mídia quando ela for entregue. A marcação fica salva e aparece igual pra você e pra agência.</p>
+    </div>
+
+    <div class="fixado">
+      <h3>★ Perfil: foto, bio e destaque de link</h3>
+      <div class="marcas marcas--fixado" data-grupo="ig-perfil" data-qtd="1"></div>
+      <p>Uma foto de perfil nova, rosto bem iluminado e fundo limpo. A agência ajusta a bio e cria o destaque “link”, que é onde fica o link (nunca na bio).</p>
+      <q>treino, rotina e o que o insta não mostra 👇 link no destaque</q>
+      <p>Sugestão de bio. <b>Pode mudar pro seu jeito e no seu tom.</b></p>
+    </div>
+
+    <div class="tipos">
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Reels de treino</h3><span class="qtd">5 reels</span></div>
+        <div class="marcas" data-grupo="ig-treino" data-qtd="5"></div>
+        <ul>
+          <li>Peito, costas, perna e ombro, com o celular no tripé</li>
+          <li>Cortes rápidos e terminar olhando pra câmera</li>
+          <li>20 a 40 segundos</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Reels de trend de áudio</h3><span class="qtd">5 reels</span></div>
+        <div class="marcas" data-grupo="ig-trend" data-qtd="5"></div>
+        <ul>
+          <li>Áudios em alta da semana (salvar os que aparecerem no seu feed)</li>
+          <li>Humor (red flags, tipos de namorado) e olhar/provocação sem nudez</li>
+          <li>Texto na tela com o gancho</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Reels de rotina e POV</h3><span class="qtd">4 reels</span></div>
+        <div class="marcas" data-grupo="ig-rotina" data-qtd="4"></div>
+        <ul>
+          <li>POV “domingo comigo”: café, treino leve, sofá</li>
+          <li>Pós-banho de toalha no espelho (sem nada explícito)</li>
+          <li>Se arrumando pra sair na sexta</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Reels de collab</h3><span class="qtd">2 reels</span></div>
+        <div class="marcas" data-grupo="ig-collab" data-qtd="2"></div>
+        <ul>
+          <li>Trend de casal (dança, desafio ou POV) com a criadora parceira</li>
+          <li>Ela marcada no reel, ele sempre em destaque</li>
+          <li>Semanas 3 e 4 (23/11 e 03/12)</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos de feed</h3><span class="qtd">5 fotos</span></div>
+        <div class="marcas" data-grupo="ig-foto" data-qtd="5"></div>
+        <ul>
+          <li>Lifestyle: carro, rua, look de noite, academia</li>
+          <li>Luz natural ou de fim de tarde</li>
+          <li>Pelo menos 3 opções por foto pra gente escolher</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Fotos pros carrosséis</h3><span class="qtd">4 carrosséis</span></div>
+        <div class="marcas" data-grupo="ig-carrossel" data-qtd="4"></div>
+        <ul>
+          <li>6 a 8 fotos do dia a dia por carrossel</li>
+          <li>Temas: 5 coisas sobre mim, como eu seria como namorado, bastidores da collab, respondendo vocês</li>
+        </ul>
+      </div>
+      <div class="tipo">
+        <div class="tipo-topo"><h3>Banco de stories</h3><span class="qtd">14 vídeos</span></div>
+        <div class="marcas" data-grupo="ig-stories" data-qtd="14"></div>
+        <ul>
+          <li>Vídeos curtos de rotina (5 a 15s): café, academia, carro, comida, bastidor</li>
+          <li>2 a 3 por semana além dos stories ao vivo do dia</li>
+          <li>Usados nos dias em que não der pra postar story na hora</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="total">Total: 39 mídias + foto de perfil.</p>
   </section>
 </main>
 
@@ -564,11 +636,14 @@ function pintar(){
     if(!tag){ tag=document.createElement("span"); tag.className="feitos"; t.querySelector(".tipo-topo h3").appendChild(tag); }
     tag.textContent = f ? `${f}/${bs.length} entregues` : "";
   });
-  const pct = total ? Math.round(feitos/total*100) : 0;
-  document.getElementById("progresso-fill").style.width = pct + "%";
-  document.getElementById("progresso-txt").textContent = bancoOk
-    ? `${feitos} de ${total} mídias entregues (${pct}%)`
-    : "Marcações ainda não ativadas: falta conectar o banco na Vercel.";
+  document.querySelectorAll(".coleta").forEach(sec=>{
+    const bs=[...sec.querySelectorAll(".entrega")];
+    const f=bs.filter(b=>b.getAttribute("aria-pressed")==="true").length;
+    const pct=bs.length?Math.round(f/bs.length*100):0;
+    const fill=sec.querySelector(".progresso-barra span"), txt=sec.querySelector(".progresso b");
+    if(fill) fill.style.width=pct+"%";
+    if(txt) txt.textContent = bancoOk ? `${f} de ${bs.length} mídias entregues (${pct}%)` : "Marcações ainda não ativadas: falta conectar o banco na Vercel.";
+  });
 }
 async function carregar(){
   try{
