@@ -188,7 +188,10 @@
   .agenda{margin:30px 0}
   .agenda-total{font-weight:800;margin:8px 0 10px}
   .agenda-lista{display:grid;gap:8px}
-  .ag-linha{display:grid;grid-template-columns:78px minmax(0,1fr) auto;align-items:center;gap:12px;background:var(--branco);border:3px solid var(--preto);padding:8px 10px}
+  .ag-linha{display:grid;grid-template-columns:78px minmax(0,1fr);align-items:start;gap:12px;background:var(--branco);border:3px solid var(--preto);padding:8px 10px}
+  .ag-posts{display:grid;gap:8px}
+  .ag-post{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px}
+  .ag-post + .ag-post{border-top:2px dashed #ccc;padding-top:8px}
   .ag-linha.feito{border-color:#16A34A;background:#F0FFF4}
   .ag-linha.passado:not(.feito){border-color:#D97706;background:#FFF7E6}
   .ag-data{font-family:var(--display);font-size:22px;line-height:1}
@@ -196,7 +199,7 @@
   .ag-desc{font-size:14px}
   .ag-desc b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
   .agendar{min-width:110px}
-  @media (max-width:520px){.ag-linha{grid-template-columns:64px minmax(0,1fr)}.ag-linha .agendar{grid-column:1/-1}}
+  @media (max-width:520px){.ag-linha{grid-template-columns:56px minmax(0,1fr)}.ag-post{grid-template-columns:minmax(0,1fr)}}
 
   footer{background:var(--preto);color:var(--creme);text-align:center;padding:22px 16px;font-size:13px;margin-top:40px}
   footer b{color:var(--rosa)}
@@ -355,8 +358,8 @@
         </ul>
       </div>
       <div class="tipo">
-        <div class="tipo-topo"><h3>Vídeos chamando pro chat</h3><span class="qtd">16 vídeos</span></div>
-        <div class="marcas" data-grupo="pv-chat" data-qtd="16"></div>
+        <div class="tipo-topo"><h3>Vídeos chamando pro chat</h3><span class="qtd">18 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-chat" data-qtd="18"></div>
         <ul>
           <li>30 segundos cada, se exibindo e chamando pro chat ou pra chamadinha</li>
           <li>Postados no feed às segundas, quartas, sextas e domingos (ver agenda abaixo)</li>
@@ -374,7 +377,7 @@
       </div>
     </div>
 
-    <p class="total">Total: 33 mídias até o fim do contrato (3 vídeos pagos e 30 mídias no feed da assinatura).</p>
+    <p class="total">Total: 35 mídias em 30 dias (3 vídeos pagos e 32 mídias no feed da assinatura).</p>
   </section>
 
   <section class="coleta coleta--ch" id="coleta-ch" data-so="ch">
@@ -539,7 +542,7 @@
 
   <section class="agenda" data-so="pv">
     <h3 class="sub-titulo">Agenda de postagens · Privacy</h3>
-    <p>Convite pra chamadinha no feed às <b>segundas, quartas, sextas e domingos</b>, até 05/12. Marque <b>Agendado</b> quando o post estiver programado.</p>
+    <p>Todas as postagens do feed por <b>30 dias (08/11 a 07/12)</b>, com pelo menos 1 post por dia. Convite pra chamadinha às segundas, quartas, sextas e domingos; nos outros dias entram fotos e vídeos solo. O vídeo de casal abre e fecha o período. Marque <b>Agendado</b> em cada post quando ele estiver programado.</p>
     <p class="agenda-total"></p>
     <div class="agenda-lista" data-rede="pv"></div>
   </section>
@@ -886,7 +889,7 @@ function pintar(){
     b.setAttribute("aria-pressed", quando ? "true" : "false");
     const ehAg = b.classList.contains("agendar");
     b.title = quando ? (ehAg?"Agendado em ":"Entregue em ") + fmtData(quando) : (ehAg?"Marcar como agendado":"Marcar como entregue");
-    if(ehAg){ b.textContent = quando ? "Agendado" : "Agendar"; const l=b.closest(".ag-linha"); if(l) l.classList.toggle("feito", !!quando); }
+    if(ehAg){ b.textContent = quando ? "Agendado" : "Agendar"; }
     b.disabled = !bancoOk;
     if(quando) feitos++;
   });
@@ -897,6 +900,10 @@ function pintar(){
     let tag = t.querySelector(".feitos");
     if(!tag){ tag=document.createElement("span"); tag.className="feitos"; t.querySelector(".tipo-topo h3").appendChild(tag); }
     tag.textContent = f ? `${f}/${bs.length} entregues` : "";
+  });
+  document.querySelectorAll(".ag-linha").forEach(l=>{
+    const bs=[...l.querySelectorAll(".agendar")];
+    l.classList.toggle("feito", bs.length>0 && bs.every(b=>b.getAttribute("aria-pressed")==="true"));
   });
   document.querySelectorAll(".agenda").forEach(sec=>{
     const bs=[...sec.querySelectorAll(".agendar")];
@@ -933,25 +940,51 @@ async function alternar(id, botao){
 }
 function montarAgenda(){
   const nomes=["dom","seg","ter","qua","qui","sex","sáb"];
-  const ini=new Date(2026,10,8), fim=new Date(2026,11,5);
   const hojeZ=new Date(); hojeZ.setHours(0,0,0,0);
   const xPorDia={}; dias.forEach(d=>{ const ult=d[4][d[4].length-1]; xPorDia[d[0]]={fmt:ult[0], hora:ult[1], legenda:ult[3]}; });
+  const conv=["Convite pra chamadinha","Vídeo de 30s se exibindo e chamando pra chamada"];
+  // feed do Privacy: posts extras por dia (ddmm), além dos convites de seg/qua/sex/dom
+  const pvExtra={
+    "0811":[["Vídeo de casal 1 · pago","8 min, abre o mês"],["Prévia do casal 1 · free","Até 40s, puxando pro vídeo pago"]],
+    "1011":[["Foto explícita 1","Feed da assinatura"]],
+    "1211":[["Vídeo solo 1 · free","5 min, lugar 1"]],
+    "1411":[["Foto explícita 2","Feed da assinatura"]],
+    "1711":[["Foto explícita 3","Feed da assinatura"]],
+    "1911":[["Vídeo solo 2 · free","5 min, lugar 2"]],
+    "2111":[["Foto explícita 4","Feed da assinatura"]],
+    "2211":[["Foto explícita 5","Feed da assinatura"]],
+    "2411":[["Foto explícita 6","Feed da assinatura"]],
+    "2611":[["Vídeo solo 3 · pago","5 min, lugar 3"]],
+    "2811":[["Foto explícita 7","Feed da assinatura"]],
+    "0112":[["Foto explícita 8","Feed da assinatura"]],
+    "0312":[["Foto explícita 9","Feed da assinatura"]],
+    "0512":[["Foto explícita 10","Feed da assinatura"]],
+    "0712":[["Vídeo de casal 2 · pago","8 min, fecha o mês"],["Prévia do casal 2 · free","Até 40s, puxando pro vídeo pago"]]
+  };
   document.querySelectorAll(".agenda-lista").forEach(box=>{
     const rede=box.dataset.rede; box.innerHTML="";
+    const ini=new Date(2026,10,8), fim= rede==="pv" ? new Date(2026,11,7) : new Date(2026,11,5);
     for(let dt=new Date(ini); dt<=fim; dt.setDate(dt.getDate()+1)){
       const dow=dt.getDay();
-      if(rede==="pv" && ![0,1,3,5].includes(dow)) continue;
-      const dd=String(dt.getDate()).padStart(2,"0"), mm=String(dt.getMonth()+1).padStart(2,"0");
-      let titulo, desc;
-      if(rede==="x"){ const x=xPorDia[dd]||{}; titulo=`${x.fmt||"Post"} · ${x.hora||""}`; desc=x.legenda||""; }
-      else { titulo="Convite pra chamadinha"; desc="Vídeo de 30s se exibindo e chamando pra chamada"; }
+      const dd=String(dt.getDate()).padStart(2,"0"), mm=String(dt.getMonth()+1).padStart(2,"0"), k=dd+mm;
+      let posts=[];
+      if(rede==="x"){ const x=xPorDia[dd]||{}; posts=[[`${x.fmt||"Post"} · ${x.hora||""}`, x.legenda||""]]; }
+      else { if([0,1,3,5].includes(dow)) posts.push(conv); posts=posts.concat(pvExtra[k]||[]); }
+      if(!posts.length) continue;
       const linha=document.createElement("div");
       linha.className="ag-linha"+(dt<hojeZ?" passado":"");
-      linha.innerHTML=`<div class="ag-data">${dd}/${mm}<small>${nomes[dow]}</small></div><div class="ag-desc"><b>${esc(titulo)}</b>${esc(desc)}</div>`;
-      const b=document.createElement("button");
-      b.type="button"; b.className="entrega agendar"; b.dataset.id=`ag-${rede}-${dd}${mm}`; b.textContent="Agendar";
-      b.onclick=()=>alternar(b.dataset.id,b);
-      linha.appendChild(b); box.appendChild(linha);
+      linha.innerHTML=`<div class="ag-data">${dd}/${mm}<small>${nomes[dow]}</small></div><div class="ag-posts"></div>`;
+      const cont=linha.querySelector(".ag-posts");
+      posts.forEach(([t,d],i)=>{
+        const row=document.createElement("div"); row.className="ag-post";
+        row.innerHTML=`<div class="ag-desc"><b>${esc(t)}</b>${esc(d)}</div>`;
+        const b=document.createElement("button");
+        b.type="button"; b.className="entrega agendar";
+        b.dataset.id = rede==="x" ? `ag-x-${k}` : `ag-pv-${k}-${i+1}`;
+        b.textContent="Agendar"; b.onclick=()=>alternar(b.dataset.id,b);
+        row.appendChild(b); cont.appendChild(row);
+      });
+      box.appendChild(linha);
     }
   });
 }
