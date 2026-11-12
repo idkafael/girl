@@ -185,6 +185,19 @@
   .etapa li::marker{font-weight:800}
   .etapa .fala{display:block;margin-top:4px;font-style:italic;border-left:3px solid #16A34A;padding-left:8px}
 
+  .agenda{margin:30px 0}
+  .agenda-total{font-weight:800;margin:8px 0 10px}
+  .agenda-lista{display:grid;gap:8px}
+  .ag-linha{display:grid;grid-template-columns:78px minmax(0,1fr) auto;align-items:center;gap:12px;background:var(--branco);border:3px solid var(--preto);padding:8px 10px}
+  .ag-linha.feito{border-color:#16A34A;background:#F0FFF4}
+  .ag-linha.passado:not(.feito){border-color:#D97706;background:#FFF7E6}
+  .ag-data{font-family:var(--display);font-size:22px;line-height:1}
+  .ag-data small{display:block;font-family:var(--texto);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .ag-desc{font-size:14px}
+  .ag-desc b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  .agendar{min-width:110px}
+  @media (max-width:520px){.ag-linha{grid-template-columns:64px minmax(0,1fr)}.ag-linha .agendar{grid-column:1/-1}}
+
   footer{background:var(--preto);color:var(--creme);text-align:center;padding:22px 16px;font-size:13px;margin-top:40px}
   footer b{color:var(--rosa)}
 </style>
@@ -342,11 +355,11 @@
         </ul>
       </div>
       <div class="tipo">
-        <div class="tipo-topo"><h3>Vídeos chamando pro chat</h3><span class="qtd">10 vídeos</span></div>
-        <div class="marcas" data-grupo="pv-chat" data-qtd="10"></div>
+        <div class="tipo-topo"><h3>Vídeos chamando pro chat</h3><span class="qtd">16 vídeos</span></div>
+        <div class="marcas" data-grupo="pv-chat" data-qtd="16"></div>
         <ul>
           <li>30 segundos cada, se exibindo e chamando pro chat ou pra chamadinha</li>
-          <li>Postar 1 a cada 3 dias no feed</li>
+          <li>Postados no feed às segundas, quartas, sextas e domingos (ver agenda abaixo)</li>
           <li>Fala direta pra câmera, como se fosse pra uma pessoa só</li>
         </ul>
       </div>
@@ -361,7 +374,7 @@
       </div>
     </div>
 
-    <p class="total">Total: 27 mídias no mês (3 vídeos pagos e 24 mídias no feed da assinatura).</p>
+    <p class="total">Total: 33 mídias até o fim do contrato (3 vídeos pagos e 30 mídias no feed da assinatura).</p>
   </section>
 
   <section class="coleta coleta--ch" id="coleta-ch" data-so="ch">
@@ -515,6 +528,20 @@
     </div>
 
     <p class="total">Total: 12 convites + 22 mídias de sexting (+1 vídeo sob pedido) + 3 scripts de sessão (18 mídias).</p>
+  </section>
+
+  <section class="agenda" data-so="x">
+    <h3 class="sub-titulo">Agenda de postagens · X</h3>
+    <p>1 post por dia até 05/12. Marque <b>Agendado</b> quando o post do dia estiver programado.</p>
+    <p class="agenda-total"></p>
+    <div class="agenda-lista" data-rede="x"></div>
+  </section>
+
+  <section class="agenda" data-so="pv">
+    <h3 class="sub-titulo">Agenda de postagens · Privacy</h3>
+    <p>Convite pra chamadinha no feed às <b>segundas, quartas, sextas e domingos</b>, até 05/12. Marque <b>Agendado</b> quando o post estiver programado.</p>
+    <p class="agenda-total"></p>
+    <div class="agenda-lista" data-rede="pv"></div>
   </section>
 
   <section class="regras">
@@ -857,7 +884,9 @@ function pintar(){
     total++;
     const quando = entregas[b.dataset.id];
     b.setAttribute("aria-pressed", quando ? "true" : "false");
-    b.title = quando ? "Entregue em " + fmtData(quando) : "Marcar como entregue";
+    const ehAg = b.classList.contains("agendar");
+    b.title = quando ? (ehAg?"Agendado em ":"Entregue em ") + fmtData(quando) : (ehAg?"Marcar como agendado":"Marcar como entregue");
+    if(ehAg){ b.textContent = quando ? "Agendado" : "Agendar"; const l=b.closest(".ag-linha"); if(l) l.classList.toggle("feito", !!quando); }
     b.disabled = !bancoOk;
     if(quando) feitos++;
   });
@@ -868,6 +897,12 @@ function pintar(){
     let tag = t.querySelector(".feitos");
     if(!tag){ tag=document.createElement("span"); tag.className="feitos"; t.querySelector(".tipo-topo h3").appendChild(tag); }
     tag.textContent = f ? `${f}/${bs.length} entregues` : "";
+  });
+  document.querySelectorAll(".agenda").forEach(sec=>{
+    const bs=[...sec.querySelectorAll(".agendar")];
+    const f=bs.filter(b=>b.getAttribute("aria-pressed")==="true").length;
+    const t=sec.querySelector(".agenda-total");
+    if(t) t.textContent = bancoOk ? `${f} de ${bs.length} posts agendados` : "";
   });
   document.querySelectorAll(".coleta").forEach(sec=>{
     const bs=[...sec.querySelectorAll(".entrega")];
@@ -896,7 +931,31 @@ async function alternar(id, botao){
   }catch(e){}
   pintar();
 }
-montarMarcas(); pintar(); carregar();
+function montarAgenda(){
+  const nomes=["dom","seg","ter","qua","qui","sex","sáb"];
+  const ini=new Date(2026,10,8), fim=new Date(2026,11,5);
+  const hojeZ=new Date(); hojeZ.setHours(0,0,0,0);
+  const xPorDia={}; dias.forEach(d=>{ const ult=d[4][d[4].length-1]; xPorDia[d[0]]={fmt:ult[0], hora:ult[1], legenda:ult[3]}; });
+  document.querySelectorAll(".agenda-lista").forEach(box=>{
+    const rede=box.dataset.rede; box.innerHTML="";
+    for(let dt=new Date(ini); dt<=fim; dt.setDate(dt.getDate()+1)){
+      const dow=dt.getDay();
+      if(rede==="pv" && ![0,1,3,5].includes(dow)) continue;
+      const dd=String(dt.getDate()).padStart(2,"0"), mm=String(dt.getMonth()+1).padStart(2,"0");
+      let titulo, desc;
+      if(rede==="x"){ const x=xPorDia[dd]||{}; titulo=`${x.fmt||"Post"} · ${x.hora||""}`; desc=x.legenda||""; }
+      else { titulo="Convite pra chamadinha"; desc="Vídeo de 30s se exibindo e chamando pra chamada"; }
+      const linha=document.createElement("div");
+      linha.className="ag-linha"+(dt<hojeZ?" passado":"");
+      linha.innerHTML=`<div class="ag-data">${dd}/${mm}<small>${nomes[dow]}</small></div><div class="ag-desc"><b>${esc(titulo)}</b>${esc(desc)}</div>`;
+      const b=document.createElement("button");
+      b.type="button"; b.className="entrega agendar"; b.dataset.id=`ag-${rede}-${dd}${mm}`; b.textContent="Agendar";
+      b.onclick=()=>alternar(b.dataset.id,b);
+      linha.appendChild(b); box.appendChild(linha);
+    }
+  });
+}
+montarAgenda(); montarMarcas(); pintar(); carregar();
 setInterval(carregar, 20000);
 document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) carregar(); });
 
